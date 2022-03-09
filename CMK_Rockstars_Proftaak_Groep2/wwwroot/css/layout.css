@@ -1,0 +1,141 @@
+﻿body{
+    background-color: lightgray;
+}
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    perspective: 1500px;
+}
+
+#sidebar {
+    max-width: 250px;
+    width: 250px;
+    background: #fff;
+    color: black;
+    transition: max-width, 1s 0.35s, transform 2s ease-out;
+    transform-origin: bottom left;
+}
+
+    #sidebar.active {
+        min-width: 100px;
+        max-width: 100px;
+        transform: rotateY(-360deg);
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px;
+        background: #fff;
+    }
+
+    #sidebar ul.components {
+        padding: 20px 0;
+    }
+
+    #sidebar ul p {
+        color: #fff;
+        padding: 10px;
+    }
+
+    #sidebar ul li a {
+        padding: 20px;
+        text-align: center;
+        font-size: 1.1em;
+        display: block;
+    }
+
+        #sidebar ul li a:hover {
+            font-weight: bold;
+            color: #FFE000;
+            background: #232323;
+        }
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+#sidebarCollapse {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    cursor: pointer;
+}
+
+    #sidebarCollapse span {
+        width: 80%;
+        height: 2px;
+        margin: 0 auto;
+        display: block;
+        background: rgb(0, 0, 0);
+        transition: all 0.8s;
+    }
+
+        #sidebarCollapse span:first-of-type {
+            transform: rotate(45deg) translate(2px, 2px);
+        }
+
+        #sidebarCollapse span:nth-of-type(2) {
+            opacity: 0;
+        }
+
+        #sidebarCollapse span:last-of-type {
+            transform: rotate(-45deg) translate(1px, -1px);
+        }
+
+    #sidebarCollapse.active span {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+    }
+
+@media (max-width: 768px) {
+    #sidebar {
+        max-width: 100px;
+        transform: rotateY(360deg);
+    }
+
+        #sidebar.active {
+            margin-left: 0;
+            transform: none;
+        }
+
+    #sidebarCollapse span:first-of-type,
+    #sidebarCollapse span:nth-of-type(2),
+    #sidebarCollapse span:last-of-type {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+    }
+
+    #sidebarCollapse.active span {
+        margin: 0 auto;
+    }
+
+        #sidebarCollapse.active span:first-of-type {
+            transform: rotate(45deg) translate(2px, 2px);
+        }
+
+        #sidebarCollapse.active span:nth-of-type(2) {
+            opacity: 0;
+        }
+
+        #sidebarCollapse.active span:last-of-type {
+            transform: rotate(-45deg) translate(1px, -1px);
+        }
+}
