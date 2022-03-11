@@ -3,3 +3,19 @@
     font-weight: bold;
     background-color: #FFE000 ;
 }
+#table_block {
+    background-color: white;
+}
+#add_btn {
+    width: 100%;
+    background-color: #FFE000;
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+
+    #add_btn:hover {
+        color: #FFE000;
+        background-color: #232323;
+        font-weight: bold;
+    }

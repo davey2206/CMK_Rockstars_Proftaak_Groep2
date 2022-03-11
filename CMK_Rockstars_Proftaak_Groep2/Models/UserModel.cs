@@ -15,6 +15,6 @@ namespace CMK_Rockstars_Proftaak_Groep2.Models
         [EmailAddress(ErrorMessage = "Invalid email")]
         public string Email { get; set; }
         public string Mobile { get; set; }
-        public List<User> Users { get; set; }
+        //public List<User> Users { get; set; }
     }
 }
