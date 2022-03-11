@@ -4,3 +4,32 @@
 @section css {
     <link href="@Url.Content("~/css/Profile.css")" rel="stylesheet" />
 }
+
+<div class="container" style=" text-align: -webkit-center;">
+    <div class="row">
+        <div class="col-10 text-center">
+            <h1>My profile</h1>
+        </div>
+    </div>
+    <div class="card" style="width: 50vh;" >
+        <div class="card-block ml-4" text-align: -webkit-center;">
+            <br />
+            <div class="form-group text-muted text-left">
+                <label for="exampleFormControlTextarea1">Name</label>
+                <input class="form-control" style="width: 40vh;" type="text" placeholder="Timmy Tribe">
+            </div>
+            <br />
+            <div class="form-group text-muted text-left" >
+                <label for="exampleFormControlTextarea1">Discription</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" style="width: 40vh;" placeholder="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui."></textarea>
+            </div>
+            <br />
+            <div class="form-group text-muted text-left">
+                <label for="exampleFormControlTextarea1">Image</label>
+                <input class="form-control" style="width: 40vh;" type="text" placeholder="Timmy Tribe">
+            </div>
+            <br />
+            <a id="add_btn" class="btn btn-primary mb-2" asp-action="add" asp-controller="home">Create user</a>
+        </div>
+    </div>
+</div>

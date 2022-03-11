@@ -3,3 +3,15 @@
     font-weight: bold;
     background-color: #FFE000;
 }
+#add_btn {
+    background-color: #FFE000;
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+
+    #add_btn:hover {
+        color: #FFE000;
+        background-color: #232323;
+        font-weight: bold;
+    }
