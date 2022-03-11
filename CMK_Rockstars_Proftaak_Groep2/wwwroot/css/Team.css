@@ -3,3 +3,67 @@
     font-weight: bold;
     background-color: #FFE000;
 }
+#table_block {
+    background-color: white;
+}
+#add_btn_user {
+    width: 100%;
+    background-color: #FFE000;
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+    #add_btn_user:hover {
+        color: #FFE000;
+        background-color: #232323;
+        font-weight: bold;
+    }
+#add_btn_tribe {
+    width: 100%;
+    background-color: #FFE000;
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+
+    #add_btn_tribe:hover {
+        color: #FFE000;
+        background-color: #232323;
+        font-weight: bold;
+    }
+#radio_btn_tribe {
+    background-color: #dedede;
+    border: none;
+    color: black;
+    transition: all 0.5s;
+}
+    #radio_btn_tribe:disabled {
+        background-color: #cacaca;
+        border: solid;
+        color: black;
+        font-weight: bold;
+    }
+    #radio_btn_tribe:hover {
+        background-color: #bdbdbd;
+        border: solid;
+        color: black;
+        font-weight: bold;
+    }
+#radio_btn_user {
+    background-color: #dedede;
+    border: none;
+    color: black;
+    transition: all 0.5s;
+}
+    #radio_btn_user:disabled {
+        background-color: #cacaca;
+        border: solid;
+        color: black;
+        font-weight: bold;
+    }
+    #radio_btn_user:hover {
+        background-color: #bdbdbd;
+        border: solid;
+        color: black;
+        font-weight: bold;
+    }
