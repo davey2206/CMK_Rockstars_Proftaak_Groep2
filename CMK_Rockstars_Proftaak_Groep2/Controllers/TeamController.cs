@@ -12,5 +12,14 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         {
             return View();
         }
+        public IActionResult Add_user()
+        {
+            return View();
+        }
+
+        public IActionResult Add_tribe()
+        {
+            return View();
+        }
     }
 }
