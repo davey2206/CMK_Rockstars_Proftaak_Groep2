@@ -26,7 +26,7 @@ form {
 #content_profile {
     width: 50vh;
     height: 50vh;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;
@@ -36,5 +36,6 @@ form {
     max-height: 100%;
     overflow: auto;
     padding: 1em 2em;
-    display: table;
+    display: grid;
+    padding-left: 60px;
 }

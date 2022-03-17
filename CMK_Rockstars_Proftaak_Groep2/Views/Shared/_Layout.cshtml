@@ -16,9 +16,9 @@
             <img id="sidebar__logo" src="img/logo.jpg" />
             <div id="sidebar__navContainer">
                 <ul id="sidebar_itemContainer">
-                    <a class="navContainer__item navContainer__item_state-active" href=""><img class="navItem__img" src="~/Icons/home.svg" alt="Home" /></a>
-                    <a class="navContainer__item" href=""><img class="navItem__img" src="~/Icons/team.svg" alt="Our team" /></a>
-                    <a class="navContainer__item" href=""><img class="navItem__img" src="~/Icons/add.svg" alt="Add" /></a>
+                    <a class="navContainer__item navContainer__item_state-active" asp-action="Index" asp-controller="Home"><img class="navItem__img" src="~/Icons/home.svg" alt="Home" /></a>
+                    <a class="navContainer__item" asp-action="Index" asp-controller="Team"><img class="navItem__img" src="~/Icons/team.svg" alt="Our team" /></a>
+                    <a class="navContainer__item" asp-action="Index" asp-controller="Profile"><img class="navItem__img" src="~/Icons/add.svg" alt="Add" /></a>
                 </ul>
             </div>
             <div id="profilepicContainer">
