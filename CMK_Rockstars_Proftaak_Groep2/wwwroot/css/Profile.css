@@ -3,3 +3,38 @@
     font-weight: bold;
     background-color: #FFE000;
 }
+#btn_add {
+    background-color: #FFE000;
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+
+    #btn_add:hover {
+        color: #FFE000;
+        background-color: #232323;
+        font-weight: bold;
+    }
+
+form {
+    background-color: white;
+    padding: 2em;
+}
+#content {
+    position: relative;
+}
+#content_profile {
+    width: 50vh;
+    height: 50vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    padding: 1em 2em;
+    display: table;
+}
