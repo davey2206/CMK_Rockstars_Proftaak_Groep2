@@ -19,17 +19,17 @@
 form {
     background-color: white;
     padding: 2em;
+    height: fit-content;
 }
 #content {
     position: relative;
 }
 #content_profile {
     width: 50vh;
-    height: 50vh;
     position: fixed;
     left: 0;
     right: 0;
-    top: 0;
+    top: 20vh;
     bottom: 0;
     margin: auto;
     max-width: 100%;
@@ -38,4 +38,5 @@ form {
     padding: 1em 2em;
     display: grid;
     padding-left: 60px;
+    grid-template-rows: 56px;
 }
