@@ -13,21 +13,16 @@
     </header>
     <div class="wrapper">
         <nav id="sidebar">
-            <img src="~/img/Logo.jpg" width="100%" />
-            <!-- Sidebar Links -->
-            <ul class="list-unstyled components">
-                <li id="nav_Home"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                <li id="nav_Team"><a asp-controller="Team" asp-action="Index">Team</a></li>
-                <li id="nav_Profile"><a asp-controller="Profile" asp-action="Index">Profile</a></li>
-                <li><a href="#">Logout</a></li>
-            </ul>
-            <!-- Sidebar Header -->
-            <div class="sidebar-header">
-                <button type="button" id="sidebarCollapse" class="navbar-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+            <img id="sidebar__logo" src="img/logo.jpg" />
+            <div id="sidebar__navContainer">
+                <ul id="sidebar_itemContainer">
+                    <a class="navContainer__item navContainer__item_state-active" href=""><img class="navItem__img" src="~/Icons/home.svg" alt="Home" /></a>
+                    <a class="navContainer__item" href=""><img class="navItem__img" src="~/Icons/team.svg" alt="Our team" /></a>
+                    <a class="navContainer__item" href=""><img class="navItem__img" src="~/Icons/add.svg" alt="Add" /></a>
+                </ul>
+            </div>
+            <div id="profilepicContainer">
+                <img id="profilepic" src="img/logo.jpg" alt="Profile picture" />
             </div>
         </nav>
 

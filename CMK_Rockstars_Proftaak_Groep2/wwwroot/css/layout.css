@@ -1,141 +1,89 @@
-﻿body{
-    background-color: #efefef;
-}
-a,
-a:hover,
-a:focus {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.3s;
+﻿#sidebar {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: minmax(120px, 15vh) auto 90px;
+    width: 4%;
+    min-width: 60px;
+    height: 100vh;
 }
 
-.navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
-}
-
-.wrapper {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
-    perspective: 1500px;
-}
-
-#sidebar {
-    max-width: 250px;
-    width: 250px;
-    background: #fff;
-    color: black;
-    transition: max-width, 1s 0.35s, transform 2s ease-out;
-    transform-origin: bottom left;
-}
-
-    #sidebar.active {
-        min-width: 100px;
-        max-width: 100px;
-        transform: rotateY(-360deg);
-    }
-
-    #sidebar .sidebar-header {
-        padding: 20px;
-        background: #fff;
-    }
-
-    #sidebar ul.components {
-        padding: 20px 0;
-    }
-
-    #sidebar ul p {
-        color: #fff;
-        padding: 10px;
-    }
-
-    #sidebar ul li a {
-        padding: 20px;
-        text-align: center;
-        font-size: 1.1em;
-        display: block;
-    }
-
-        #sidebar ul li a:hover {
-            font-weight: bold;
-            color: #FFE000;
-            background: #232323;
-        }
-
-#content {
-    width: 100%;
-    padding: 20px;
-    min-height: 100vh;
-}
-
-#sidebarCollapse {
+#sidebar__logo {
+    grid-row-start: 1;
+    justify-self: center;
+    margin-top: 25px;
     width: 40px;
-    height: 40px;
-    background: #fff;
-    cursor: pointer;
 }
 
-    #sidebarCollapse span {
-        width: 80%;
-        height: 2px;
-        margin: 0 auto;
-        display: block;
-        background: rgb(0, 0, 0);
-        transition: all 0.8s;
-    }
+#sidebar__navContainer {
+    grid-row-start: 2;
+}
 
-        #sidebarCollapse span:first-of-type {
-            transform: rotate(45deg) translate(2px, 2px);
-        }
+#sidebar_itemContainer {
+    padding: 0;
+}
 
-        #sidebarCollapse span:nth-of-type(2) {
-            opacity: 0;
-        }
+.navContainer__item {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    opacity: .5;
+}
 
-        #sidebarCollapse span:last-of-type {
-            transform: rotate(-45deg) translate(1px, -1px);
-        }
+.navContainer__item ~ .navContainer__item {
+    margin-top: 10px;
+}
 
-    #sidebarCollapse.active span {
-        transform: none;
-        opacity: 1;
-        margin: 5px auto;
-    }
+.navItem__img {
+    width: 30%;
+}
 
-@media (max-width: 768px) {
-    #sidebar {
-        max-width: 100px;
-        transform: rotateY(360deg);
-    }
+.navContainer__item:hover {
+    opacity: 1;
+}
 
-        #sidebar.active {
-            margin-left: 0;
-            transform: none;
-        }
+.navContainer__item_state-active {
+    opacity: 1;
+}
 
-    #sidebarCollapse span:first-of-type,
-    #sidebarCollapse span:nth-of-type(2),
-    #sidebarCollapse span:last-of-type {
-        transform: none;
-        opacity: 1;
-        margin: 5px auto;
-    }
+.navContainer__item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: none;
+    width: 110%;
+    height: 100%;
+    border-radius: 0 5px 5px 0;
+    background: rgb(255,224,0);
+    background: linear-gradient(112deg, rgba(255,224,0,1) 0%, rgba(255,160,0,1) 100%);
+}
 
-    #sidebarCollapse.active span {
-        margin: 0 auto;
-    }
+.navContainer__item_state-active::after {
+    display: block;
+}
 
-        #sidebarCollapse.active span:first-of-type {
-            transform: rotate(45deg) translate(2px, 2px);
-        }
+.navContainer__item:hover::after {
+    display: block;
+    background: #EBEBEB;
+}
 
-        #sidebarCollapse.active span:nth-of-type(2) {
-            opacity: 0;
-        }
-
-        #sidebarCollapse.active span:last-of-type {
-            transform: rotate(-45deg) translate(1px, -1px);
-        }
+#profilepicContainer {
+    grid-row-start: 3;
+    place-self: center;
+    justify-content: center;
+    width: 39px;
+    height: 39px;
+    padding: 2px;
+    border-radius: 100%;
+    background: rgb(255,224,0);
+    background: linear-gradient(112deg, rgba(255,224,0,1) 0%, rgba(255,160,0,1) 100%);
+}
+    
+#profilepic {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
 }
