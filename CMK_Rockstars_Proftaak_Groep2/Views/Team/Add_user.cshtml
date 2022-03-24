@@ -1,29 +1,32 @@
 ﻿@{
-    ViewData["Title"] = "Profile Page";
+    ViewData["Title"] = "User Page";
 }
 @section css {
-    <link href="@Url.Content("~/css/Profile.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/user.css")" rel="stylesheet" />
 }
 
 <div class="container">
-    <div id="content_profile">
+    <div id="content_user">
         <div>
-            <h1>My Profile</h1>
+            <h1>Create a user</h1>
         </div>
         <form class="rounded mt-2">
             <div class="form-group">
-                <label>Username</label>
+                <label>Name</label>
                 <input type="text" class="form-control">
             </div>
             <div class="form-group">
-                <label>Description</label>
+                <label>Tribe</label>
                 <input type="text" class="form-control">
             </div>
             <div class="form-group">
                 <label>Image</label>
                 <input type="file" class="form-control">
             </div>
-            <button id="btn_add" type="submit" class="btn btn-primary">Edit Profile</button>
+            <button id="btn_add" type="submit" class="btn btn-primary">Create user</button>
         </form>
     </div>
 </div>
+<script>
+    $('#Add').addClass('navContainer__item navContainer__item_state-active');
+</script>

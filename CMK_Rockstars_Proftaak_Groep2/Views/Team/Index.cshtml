@@ -11,8 +11,8 @@
                 <h1>Our Team</h1>
             </div>
             <div class="col 1 text-sm-left mt-3">
-                <a id="add_btn_user" class="btn btn-primary" asp-action="add_user" asp-controller="Team">Create User</a>
-                <a id="add_btn_tribe" class="btn btn-primary" asp-action="add_tribe" asp-controller="Team" style="display: none;">Create Tribe</a>
+                <a id="add_btn_user" class="btn btn-primary" asp-action="Add_user" asp-controller="Team">Create User</a>
+                <a id="add_btn_tribe" class="btn btn-primary" asp-action="Add_tribe" asp-controller="Team" style="display: none;">Create Tribe</a>
             </div>
         </div>
         <div class="text-left mt-3">
@@ -148,4 +148,7 @@
             user.style.display = "";
         }
     }
+</script>
+<script>
+    $('#Team').addClass('navContainer__item navContainer__item_state-active');
 </script>

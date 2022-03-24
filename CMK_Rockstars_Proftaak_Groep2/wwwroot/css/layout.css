@@ -1,4 +1,12 @@
-﻿#sidebar {
+﻿body {
+    background-color: #efefef;
+}
+#content{
+    padding-left: 40px;
+}
+#sidebar {
+    background-color: white;
+    position: fixed;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: minmax(120px, 15vh) auto 90px;

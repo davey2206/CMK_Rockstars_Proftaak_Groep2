@@ -1,8 +1,9 @@
-﻿#nav_Profile {
+﻿#nav_User {
     color: black;
     font-weight: bold;
     background-color: #FFE000;
 }
+
 #btn_add {
     background-color: #FFE000;
     color: black;
@@ -21,10 +22,12 @@ form {
     padding: 2em;
     height: fit-content;
 }
+
 #content {
     position: relative;
 }
-#content_profile {
+
+#content_user {
     width: 50vh;
     position: fixed;
     left: 5vh;

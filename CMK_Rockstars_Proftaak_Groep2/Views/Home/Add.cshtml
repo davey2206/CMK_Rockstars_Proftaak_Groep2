@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Add Blog";
+}
+@section css {
+    <link href="@Url.Content("~/css/Post.css")" rel="stylesheet" />
+}
+
+<div class="container">
+    <div id="content_post">
+        <div>
+            <h1>Add blog</h1>
+        </div>
+        <form class="rounded mt-2">
+            <div class="form-group">
+                <label>Title</label>
+                <input name="Title" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Text</label>
+                <textarea name="Artical" type="text" class="form-control" rows="3"></textarea>
+            </div>
+            <button id="btn_add" type="submit" class="btn btn-primary">Post Blog</button>
+        </form>
+    </div>
+</div>
+<script>
+    $('#Add').addClass('navContainer__item navContainer__item_state-active');
+</script>
