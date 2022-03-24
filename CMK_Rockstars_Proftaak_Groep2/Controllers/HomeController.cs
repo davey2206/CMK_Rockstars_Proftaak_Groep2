@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace CMK_Rockstars_Proftaak_Groep2.Controllers
 {
@@ -18,9 +20,18 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<Article> ArticleList = new List<Article>();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    ArticleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
+                }
+            }
+                return View(ArticleList);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

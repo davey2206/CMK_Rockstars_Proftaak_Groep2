@@ -36,12 +36,13 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script>
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-                $(this).toggleClass('active');
-            });
-        });
+        // Navigation buttons
+        const NAV_BUTTONS = document.getElementsByClassName("navContainer__item");
+        const BUTTON_HOME = navButtons[0];
+        const BUTTON_TEAM = navButtons[0];
+        const BUTTON_CONTACT = navButtons[0];
+
+        
     </script>
     @RenderSection("Scripts", required: false)
 </body>
