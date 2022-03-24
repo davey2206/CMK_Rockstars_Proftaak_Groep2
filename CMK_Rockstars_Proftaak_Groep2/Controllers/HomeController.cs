@@ -22,16 +22,16 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Article> ArticleList = new List<Article>();
+            List<Article> articleList = new List<Article>();
             using (var httpClient = new HttpClient())
             {
                 using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    ArticleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
+                    articleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
                 }
             }
-                return View(ArticleList);
+            return View();
         }
 
         public IActionResult Add()
