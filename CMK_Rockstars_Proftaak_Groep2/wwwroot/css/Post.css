@@ -1,4 +1,4 @@
-﻿#nav_Profile {
+﻿#nav_Post {
     color: black;
     font-weight: bold;
     background-color: #FFE000;
@@ -27,7 +27,7 @@ form {
     position: relative;
 }
 
-#content_profile {
+#content_post {
     width: 50vh;
     position: fixed;
     left: 0;
