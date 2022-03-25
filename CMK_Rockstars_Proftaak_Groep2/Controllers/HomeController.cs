@@ -31,6 +31,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                     articleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
                 }
             }
+            ViewData["Articles"] = articleList;
             return View();
         }
 
