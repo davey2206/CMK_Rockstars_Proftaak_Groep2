@@ -11,6 +11,9 @@
             <h1>Edit blog</h1>
         </div>
         <form class="rounded mt-2" asp-controller="Home" asp-action="Edit">
+            <input hidden name="Id" value="@ViewBag.article.Id" />
+            <input hidden name="TribeId" value="@ViewBag.article.TribeId" />
+            <input hidden name="RockstarId" value="@ViewBag.article.RockstarId" />
             <div class="form-group">
                 <label>Title</label>
                 <input name="Title" type="text" class="form-control" value="@ViewBag.article.Title">

@@ -43,7 +43,6 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAsync([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName")] Article article)
         {
-            Article receivedArticle = new Article();
             using (var httpClient = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(article), Encoding.UTF8, "application/json");
@@ -51,7 +50,6 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                 using (var response = await httpClient.PostAsync("https://rockstar-api.azurewebsites.net/api/Article", content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    receivedArticle = JsonConvert.DeserializeObject<Article>(apiResponse);
                 }
             }
             return RedirectToAction("Index", "Home");
@@ -72,8 +70,17 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Edit([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName")] Article article)
+        public async Task<IActionResult> EditAsync([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName")] Article article)
         {
+            using (var httpClient = new HttpClient())
+            {
+                StringContent content = new StringContent(JsonConvert.SerializeObject(article), Encoding.UTF8, "application/json");
+
+                using (var response = await httpClient.PutAsync("https://rockstar-api.azurewebsites.net/api/Article/" + article.Id, content))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                }
+            }
             return RedirectToAction("Index", "Home");
         }
 
