@@ -10,14 +10,16 @@
         <div>
             <h1>Add blog</h1>
         </div>
-        <form class="rounded mt-2">
+        <form class="rounded mt-2" asp-controller="Home" asp-action="Add">
+            <input hidden name="TribeId" value="4d5cd5f1-905e-42c2-862d-08d9f78bd069" />
+            <input hidden name="RockstarId" value="0a412cd1-77f6-4563-29f2-08da081a3a26" />
             <div class="form-group">
                 <label>Title</label>
                 <input name="Title" type="text" class="form-control">
             </div>
             <div class="form-group">
-                <label>Text</label>
-                <textarea name="Artical" type="text" class="form-control" rows="3"></textarea>
+                <label>Content</label>
+                <textarea name="Content" type="text" class="form-control" rows="3"></textarea>
             </div>
             <button id="btn_add" type="submit" class="btn btn-primary">Post Blog</button>
         </form>
