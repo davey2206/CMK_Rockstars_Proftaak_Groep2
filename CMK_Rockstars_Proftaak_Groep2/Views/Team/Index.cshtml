@@ -34,43 +34,26 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col" width="1000vh">Name</th>
+                            <th scope="col" width="500vh">Name</th>
                             <th scope="col" width="500vh">Role</th>
+                            <th scope="col" width="1000vh">Description</th>
                             <th scope="col" width="500vh">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach (var rockstar in ViewData["Rockstars"] as List<Rockstar>)
+	                    {
                         <tr>
-                            <th scope="row">1</th>
-                            <td>bob</td>
-                            <td>rockstar</td>
+                            <td>@rockstar.Name</td>
+                            <td>@rockstar.Role</td>
+                            <td>@rockstar.Description</td>
                             <td>
                                 <a>edit</a>
                                 <a class="ml-2">view</a>
                                 <a class="ml-2">delete</a>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>henk</td>
-                            <td>rockstar</td>
-                            <td>
-                                <a>edit</a>
-                                <a class="ml-2">view</a>
-                                <a class="ml-2">delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>job</td>
-                            <td>rockstar</td>
-                            <td>
-                                <a>edit</a>
-                                <a class="ml-2">view</a>
-                                <a class="ml-2">delete</a>
-                            </td>
-                        </tr>
+	                    }                        
                     </tbody>
                 </table>
             </div>
@@ -86,39 +69,22 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col" width="1000vh">Name</th>
+                            <th scope="col">Name</th>
                             <th scope="col" width="500vh">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach (var tribe in ViewData["Tribes"] as List<Tribe>)
+                        {
                         <tr>
-                            <th scope="row">1</th>
-                            <td>azure</td>
+                            <td>@tribe.Name</td>
                             <td>
                                 <a>edit</a>
                                 <a class="ml-2">view</a>
                                 <a class="ml-2">delete</a>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>c#</td>
-                            <td>
-                                <a>edit</a>
-                                <a class="ml-2">view</a>
-                                <a class="ml-2">delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>js</td>
-                            <td>
-                                <a>edit</a>
-                                <a class="ml-2">view</a>
-                                <a class="ml-2">delete</a>
-                            </td>
-                        </tr>
+                        }
                     </tbody>
                 </table>
             </div>
