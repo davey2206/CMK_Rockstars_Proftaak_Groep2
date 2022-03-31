@@ -27,7 +27,7 @@ form {
 #content_profile {
     width: 50vh;
     position: fixed;
-    left: 0;
+    left: 5vh;
     right: 0;
     top: 20vh;
     bottom: 0;
