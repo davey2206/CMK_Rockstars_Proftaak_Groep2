@@ -27,43 +27,26 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col" width="1000vh">Title</th>
-                            <th scope="col" width="500vh">Date</th>
+                            <th scope="col" width="500vh">Title</th>
+                            <th scope="col" width="1000vh">Tribe</th>
+                            <th scope="col" width="500vh">Rockstar</th>
                             <th scope="col" width="500vh">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach (var article in ViewData["Articles"] as List<Article>)
+                        {
                         <tr>
-                            <th scope="row">1</th>
-                            <td>code is hell</td>
-                            <td>11-03-2022</td>
+                            <th scope="row">@article.Title</th>
+                            <td>@article.TribeName</td>
+                            <td>@article.RockstarName</td>
                             <td>
-                                <a>edit</a>
+                                <a href="/Home/Edit/@article.Id">edit</a>
                                 <a class="ml-2">view</a>
                                 <a class="ml-2">delete</a>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>hallo world</td>
-                            <td>10-0-2022</td>
-                            <td>
-                                <a>edit</a>
-                                <a class="ml-2">view</a>
-                                <a class="ml-2">delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <a>edit</a>
-                                <a class="ml-2">view</a>
-                                <a class="ml-2">delete</a>
-                            </td>
-                        </tr>
+                        }
                     </tbody>
                 </table>
             </div>
