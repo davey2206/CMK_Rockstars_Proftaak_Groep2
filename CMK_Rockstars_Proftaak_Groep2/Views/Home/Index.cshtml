@@ -6,37 +6,37 @@
     <link href="@Url.Content("~/css/Delete.css")" rel="stylesheet" />
 }
 
-    <div class="container p-5">
-        <div class="text-center">
+<div class="container p-5">
+    <div class="text-center">
+        <div class="row">
+            <div class="col-10 text-left">
+                <h1>Homepage</h1>
+            </div>
+            <div class="col 1 text-sm-left mt-3">
+                <a id="add_btn" class="btn btn-primary" asp-action="add" asp-controller="home">Create post</a>
+            </div>
+        </div>
+        <div id="table_block" class="mt-2 rounded">
             <div class="row">
-                <div class="col-10 text-left">
-                    <h1>Homepage</h1>
+                <div class="col-6 text-left pl-5 pt-2 pb-2">
+                    <h2>Posts</h2>
                 </div>
-                <div class="col 1 text-sm-left mt-3">
-                    <a id="add_btn" class="btn btn-primary" asp-action="add" asp-controller="home">Create post</a>
+                <div class="col 1 mr-2" style="align-self: center; text-align: right;">
+                    <input type="text" placeholder="Search" />
                 </div>
             </div>
-            <div id="table_block" class="mt-2 rounded">
-                <div class="row">
-                    <div class="col-6 text-left pl-5 pt-2 pb-2">
-                        <h2>Posts</h2>
-                    </div>
-                    <div class="col 1 mr-2" style="align-self: center; text-align: right;">
-                        <input type="text" placeholder="Search" />
-                    </div>
-                </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col" width="500vh">Title</th>
-                            <th scope="col" width="1000vh">Tribe</th>
-                            <th scope="col" width="500vh">Rockstar</th>
-                            <th scope="col" width="500vh">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var article in ViewData["Articles"] as List<Article>)
-                        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" width="500vh">Title</th>
+                        <th scope="col" width="1000vh">Tribe</th>
+                        <th scope="col" width="500vh">Rockstar</th>
+                        <th scope="col" width="500vh">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var article in ViewData["Articles"] as List<Article>)
+                    {
                         <tr>
                             <th scope="row">@article.Title</th>
                             <td>@article.TribeName</td>
@@ -44,20 +44,18 @@
                             <td>
                                 <a href="/Home/Edit/@article.Id">edit</a>
                                 <a class="ml-2">view</a>
-                                <a class="ml-2" data-toggle="modal" data-target="#exampleModalCenter">delete</a>
+                                <a class="ml-2" data-toggle="modal" data-target="#Modal-@article.Id">delete</a>
                             </td>
                         </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
-    <script>
-        $('#Home').addClass('navContainer__item navContainer__item_state-active');
-    </script>
-
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+</div>
+@foreach (var article in ViewData["Articles"] as List<Article>)
+{
+    <div class="modal fade" id="Modal-@article.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -67,12 +65,19 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    @article.Title
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <form asp-action="Delete" asp-controller="Home">
+                        <input hidden value="@article.Id" />
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+}
+<script>
+    $('#Home').addClass('navContainer__item navContainer__item_state-active');
+</script>
