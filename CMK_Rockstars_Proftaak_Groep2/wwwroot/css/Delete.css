@@ -1,0 +1,31 @@
+﻿#modal_btn {
+    height: auto;
+    background-color: #FFE000;
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+
+    #modal_btn:hover {
+        color: black;
+        background-color: red;
+        font-weight: bold;
+    }
+
+#modal_btn_close {
+    height: auto;
+    background-color: #232323;
+    color: #FFE000;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+
+    #modal_btn_close:hover {
+        color: black;
+        background-color: dodgerblue;
+        font-weight: bold;
+    }
+
+#modal_header {
+    border: none;
+}
