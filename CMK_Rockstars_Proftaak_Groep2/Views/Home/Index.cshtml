@@ -4,6 +4,7 @@
 @section css {
     <link href="@Url.Content("~/css/Home.css")" rel="stylesheet" />
     <link href="@Url.Content("~/css/Delete.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/ModelOverwrite.css")" rel="stylesheet" />
 }
 
 <div class="container p-5">
@@ -58,7 +59,7 @@
     <div class="modal fade" id="Modal-@article.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" id="modal_header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to delete</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -67,11 +68,11 @@
                 <div class="modal-body">
                     @article.Title
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" id="modal_header">
                     <form asp-action="Delete" asp-controller="Home">
                         <input hidden name="Id" value="@article.Id" />
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Delete</button>
+                        <button type="button" class="btn btn-dark" id="modal_btn_close" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark" id="modal_btn">Delete</button>
                     </form>
                 </div>
             </div>
