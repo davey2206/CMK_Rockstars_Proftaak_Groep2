@@ -84,6 +84,20 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteAsync(string Id)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.DeleteAsync("https://rockstar-api.azurewebsites.net/api/Article/" + Id))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                }
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
