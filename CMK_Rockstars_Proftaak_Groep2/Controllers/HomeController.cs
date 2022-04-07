@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CMK_Rockstars_Proftaak_Groep2.Controllers
 {
@@ -53,6 +54,12 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                 }
             }
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
+        public IActionResult Auth()
+        {
+            return View();
         }
 
         public async Task<IActionResult> EditAsync(string id)
