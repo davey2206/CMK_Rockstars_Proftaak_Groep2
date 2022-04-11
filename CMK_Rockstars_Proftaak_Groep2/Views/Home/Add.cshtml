@@ -9,12 +9,12 @@
     <div class="editor">
 
     </div>
-    @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { onsubmit = "return Test()" }))
+    @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { onsubmit = "return AddValue()" }))
     {
         <input hidden name="TribeId" value="92b75a09-acd0-410b-e6b6-08d9f79c5c28" />
         <input hidden name="RockstarId" value="400db0b2-0316-429c-9422-08da1246c731" />
         <input id="Title" name="Title" value="" />
-        <input id="content" hidden name="Content" value="" />
+        <input id="TextContent" hidden name="Content" value="" />
 
 
         <input type="submit" value="toevoegen"/>
@@ -36,9 +36,10 @@
         });
 </script>
 <script>
-    function Test() {
-        document.getElementById("content").value = editor.getData();
+    function AddValue() {
+        document.getElementById("TextContent").value = editor.getData();
         return true;
     }
+
     $('#Add').addClass('navContainer__item navContainer__item_state-active');
 </script>
