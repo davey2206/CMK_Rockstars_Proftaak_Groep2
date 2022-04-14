@@ -4,27 +4,49 @@
 @section css {
     <link href="@Url.Content("~/css/Post.css")" rel="stylesheet" />
 }
+<script src="~/js/editer/build/ckeditor.js"></script>
+<div class="container p-5">
+    <h1>Artikel Toevoegen</h1>
+    <div id="post">
+        @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { onsubmit = "return AddValue()" }))
+        {
+            <div>
+                <h1 id="Title_text">Title</h1>
+                <input id="btn_add" class="btn" type="submit" value="toevoegen" />
+            </div>
+            <div>
+                <input hidden name="TribeId" value="92b75a09-acd0-410b-e6b6-08d9f79c5c28" />
+                <input hidden name="RockstarId" value="400db0b2-0316-429c-9422-08da1246c731" />
+                <input id="Title" name="Title" value="" />
+                <input id="TextContent" hidden name="Content" value="" />
+            </div>
+        }
+        <h1 style="padding-left: 1em;">Artikel</h1>
+        <div class="editor">
 
-<div class="container">
-    <div id="content_post">
-        <div>
-            <h1>Add blog</h1>
         </div>
-        <form class="rounded mt-2" asp-controller="Home" asp-action="Add">
-            <input hidden name="TribeId" value="92b75a09-acd0-410b-e6b6-08d9f79c5c28" />
-            <input hidden name="RockstarId" value="400db0b2-0316-429c-9422-08da1246c731" />
-            <div class="form-group">
-                <label>Title</label>
-                <input name="Title" type="text" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Content</label>
-                <textarea name="Content" type="text" class="form-control" rows="3"></textarea>
-            </div>
-            <button id="btn_add" type="submit" class="btn btn-primary">Post Blog</button>
-        </form>
     </div>
 </div>
 <script>
+    ClassicEditor
+        .create(document.querySelector('.editor'), {
+            licenseKey: '',
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(error => {
+            console.error('Oops, something went wrong!');
+            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+            console.warn('Build id: yj0c4x9dsld2-wobfokcq8hgl');
+            console.error(error);
+        });
+</script>
+<script>
+    function AddValue() {
+        document.getElementById("TextContent").value = editor.getData();
+        return true;
+    }
+
     $('#Add').addClass('navContainer__item navContainer__item_state-active');
 </script>

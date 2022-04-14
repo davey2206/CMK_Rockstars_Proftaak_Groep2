@@ -43,9 +43,9 @@
                             <td>@article.TribeName</td>
                             <td>@article.RockstarName</td>
                             <td>
-                                <a href="/Home/Edit/@article.Id">edit</a>
-                                <a class="ml-2">view</a>
-                                <a class="ml-2" data-toggle="modal" data-target="#Modal-@article.Id">delete</a>
+                                <a id="btn_Link" class="btn" href="/Home/Edit/@article.Id">edit</a>
+                                <a id="btn_Link" class="btn">view</a>
+                                <a id="btn_Delete" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">delete</a>
                             </td>
                         </tr>
                     }
