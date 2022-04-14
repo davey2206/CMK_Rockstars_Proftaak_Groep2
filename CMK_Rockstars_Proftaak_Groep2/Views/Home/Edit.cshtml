@@ -5,23 +5,28 @@
     <link href="@Url.Content("~/css/Post.css")" rel="stylesheet" />
 }
 <script src="~/js/editer/build/ckeditor.js"></script>
-<div class="container" onload="loadContent()">
-    <div class="editor">
+<div class="container p-5">
+    <h1>Artikel Veranderen</h1>
+    <div id="post">
+        @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { onsubmit = "return EditValue()" }))
+        {
+            <div>
+                <h1 id="Title_text">Title</h1>
+                <input id="btn_add" class="btn" type="submit" value="Verander" />
+            </div>
+            <div>
+                <input hidden name="Id" value="@ViewBag.article.Id" />
+                <input hidden name="TribeId" value="@ViewBag.article.TribeId" />
+                <input hidden name="RockstarId" value="@ViewBag.article.RockstarId" />
+                <input name="Title" id="Title" value="@ViewBag.article.Title">
+                <input hidden id="TextContent"  name="Content" value="@ViewBag.article.Content" />
+            </div>
+        }
+        <h1 style="padding-left: 1em;">Artikel</h1>
+        <div class="editor">
 
+        </div>
     </div>
-    @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { onsubmit = "return EditValue()" }))
-    {
-
-        <input hidden name="Id" value="@ViewBag.article.Id" />
-        <input hidden name="TribeId" value="@ViewBag.article.TribeId" />
-        <input hidden name="RockstarId" value="@ViewBag.article.RockstarId" />
-        <input name="Title" id="Title" value="@ViewBag.article.Title">
-        <input hidden name="Content" id="TextContent" value="" />
-
-        <input type="submit" value="Edit" />
-
-    }
-    <button onclick="editor.setData(@ViewBag.article.Content"></button>
 </div>
 <script>
     ClassicEditor
@@ -42,10 +47,10 @@
     function EditValue() {
         document.getElementById("TextContent").value = editor.getData();
         return true;
-    }
-    function loadContent() {
-        editor.setData(@ViewBag.article.Content);
-    }
+    }    
+
+    var data = document.getElementById("TextContent").value;
+    window.editor.setData(data);
 
     $('#Add').addClass('navContainer__item navContainer__item_state-active');
 </script>
