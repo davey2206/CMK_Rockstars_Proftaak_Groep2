@@ -5,20 +5,27 @@
     <link href="@Url.Content("~/css/Post.css")" rel="stylesheet" />
 }
 <script src="~/js/editer/build/ckeditor.js"></script>
-<div class="container">
-    <div class="editor">
+<div class="container p-5">
+    <h1>Artikel Toevoegen</h1>
+    <div id="post">
+        @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { onsubmit = "return AddValue()" }))
+        {
+            <div>
+                <h1 id="Title_text">Title</h1>
+                <input id="btn_add" class="btn" type="submit" value="toevoegen" />
+            </div>
+            <div>
+                <input hidden name="TribeId" value="92b75a09-acd0-410b-e6b6-08d9f79c5c28" />
+                <input hidden name="RockstarId" value="400db0b2-0316-429c-9422-08da1246c731" />
+                <input id="Title" name="Title" value="" />
+                <input id="TextContent" hidden name="Content" value="" />
+            </div>
+        }
+        <h1 style="padding-left: 1em;">Artikel</h1>
+        <div class="editor">
 
+        </div>
     </div>
-    @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { onsubmit = "return AddValue()" }))
-    {
-        <input hidden name="TribeId" value="92b75a09-acd0-410b-e6b6-08d9f79c5c28" />
-        <input hidden name="RockstarId" value="400db0b2-0316-429c-9422-08da1246c731" />
-        <input id="Title" name="Title" value="" />
-        <input id="TextContent" hidden name="Content" value="" />
-
-
-        <input type="submit" value="toevoegen"/>
-    }
 </div>
 <script>
     ClassicEditor
