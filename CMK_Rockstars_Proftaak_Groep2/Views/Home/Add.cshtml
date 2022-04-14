@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Add Blog";
+    ViewData["Title"] = "Aanmaak Pagina";
 }
 @section css {
     <link href="@Url.Content("~/css/Post.css")" rel="stylesheet" />
@@ -11,7 +11,7 @@
         @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { onsubmit = "return AddValue()" }))
         {
             <div>
-                <h1 id="Title_text">Title</h1>
+                <h1 id="Title_text">Titel</h1>
                 <input id="btn_add" class="btn" type="submit" value="toevoegen" />
             </div>
             <div>

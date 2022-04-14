@@ -1,18 +1,18 @@
 ﻿@{
-    ViewData["Title"] = "Edit Blog";
+    ViewData["Title"] = "Bewerk Pagina";
 }
 @section css {
     <link href="@Url.Content("~/css/Post.css")" rel="stylesheet" />
 }
 <script src="~/js/editer/build/ckeditor.js"></script>
 <div class="container p-5">
-    <h1>Artikel Veranderen</h1>
+    <h1>Artikel Bewerken</h1>
     <div id="post">
         @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { onsubmit = "return EditValue()" }))
         {
             <div>
-                <h1 id="Title_text">Title</h1>
-                <input id="btn_add" class="btn" type="submit" value="Verander" />
+                <h1 id="Title_text">Titel</h1>
+                <input id="btn_add" class="btn" type="submit" value="Bewerk" />
             </div>
             <div>
                 <input hidden name="Id" value="@ViewBag.article.Id" />
