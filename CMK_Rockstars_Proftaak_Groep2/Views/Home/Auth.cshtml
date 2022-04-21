@@ -2,9 +2,14 @@
 <div class="container">
     <div id="content_post">
         <div>
-            <h1>
-                Je bent geauthenticeerd!
-            </h1>
+            <h1>Je bent geauthenticeerd!</h1>
+            <ul>
+                @foreach(var claim in User.Claims)
+                {
+                    <li>@claim.Type: @claim.Value</li>
+                }
+            </ul>
+            <h1>@User.Claims.ElementAt(1).Value</h1>
         </div>
     </div>
 </div>
