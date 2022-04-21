@@ -1,31 +1,56 @@
 ﻿@{
-    ViewData["Title"] = "Edit Blog";
+    ViewData["Title"] = "Bewerk Pagina";
 }
 @section css {
     <link href="@Url.Content("~/css/Post.css")" rel="stylesheet" />
 }
+<script src="~/js/editer/build/ckeditor.js"></script>
+<div class="container p-5">
+    <h1>Artikel Bewerken</h1>
+    <div id="post">
+        @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { onsubmit = "return EditValue()" }))
+        {
+            <div>
+                <h1 id="Title_text">Titel</h1>
+                <input id="btn_add" class="btn" type="submit" value="Bewerk" />
+            </div>
+            <div>
+                <input hidden name="Id" value="@ViewBag.article.Id" />
+                <input hidden name="TribeId" value="@ViewBag.article.TribeId" />
+                <input hidden name="RockstarId" value="@ViewBag.article.RockstarId" />
+                <input name="Title" id="Title" value="@ViewBag.article.Title">
+                <input hidden id="TextContent"  name="Content" value="@ViewBag.article.Content" />
+            </div>
+        }
+        <h1 style="padding-left: 1em;">Artikel</h1>
+        <div class="editor">
 
-<div class="container">
-    <div id="content_post">
-        <div>
-            <h1>Edit blog</h1>
         </div>
-        <form class="rounded mt-2" asp-controller="Home" asp-action="Edit">
-            <input hidden name="Id" value="@ViewBag.article.Id" />
-            <input hidden name="TribeId" value="@ViewBag.article.TribeId" />
-            <input hidden name="RockstarId" value="@ViewBag.article.RockstarId" />
-            <div class="form-group">
-                <label>Title</label>
-                <input name="Title" type="text" class="form-control" value="@ViewBag.article.Title">
-            </div>
-            <div class="form-group">
-                <label>Content</label>
-                <textarea name="Content" type="text" class="form-control" rows="3">@ViewBag.article.Content</textarea>
-            </div>
-            <button id="btn_add" type="submit" class="btn btn-primary">Edit Blog</button>
-        </form>
     </div>
 </div>
 <script>
+    ClassicEditor
+        .create(document.querySelector('.editor'), {
+            licenseKey: '',
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(error => {
+            console.error('Oops, something went wrong!');
+            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+            console.warn('Build id: yj0c4x9dsld2-wobfokcq8hgl');
+            console.error(error);
+        });
+</script>
+<script>
+    function EditValue() {
+        document.getElementById("TextContent").value = editor.getData();
+        return true;
+    }    
+
+    var data = document.getElementById("TextContent").value;
+    window.editor.setData(data);
+
     $('#Add').addClass('navContainer__item navContainer__item_state-active');
 </script>

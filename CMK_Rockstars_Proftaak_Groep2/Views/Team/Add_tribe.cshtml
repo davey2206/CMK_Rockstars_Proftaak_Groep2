@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Tribe Page";
+    ViewData["Title"] = "Tribe Pagina";
 }
 @section css {
     <link href="@Url.Content("~/css/Tribe.css")" rel="stylesheet" />
@@ -8,14 +8,14 @@
 <div class="container">
     <div id="content_tribe">
         <div>
-            <h1>Create a tribe</h1>
+            <h1>Maak een tribe aan</h1>
         </div>
         <form class="rounded mt-2" asp-controller="Team" asp-action="Add_tribe">
             <div class="form-group">
-                <label>Name</label>
+                <label>Naam</label>
                 <input name="Name" type="text" class="form-control">
             </div>
-            <button id="btn_add" type="submit" class="btn btn-primary">Create tribe</button>
+            <button id="btn_add" type="submit" class="btn btn-primary">Tribe aanmaken</button>
         </form>
     </div>
 </div>

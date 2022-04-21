@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Profile Page";
+    ViewData["Title"] = "Profiel Pagina";
 }
 @section css {
     <link href="@Url.Content("~/css/Profile.css")" rel="stylesheet" />
@@ -8,22 +8,22 @@
 <div class="container">
     <div id="content_profile">
         <div>
-            <h1>My Profile</h1>
+            <h1>Mijn Profiel</h1>
         </div>
         <form class="rounded mt-2">
             <div class="form-group">
-                <label>Username</label>
+                <label>Gebruikersnaam</label>
                 <input type="text" class="form-control">
             </div>
             <div class="form-group">
-                <label>Description</label>
+                <label>Omschrijving</label>
                 <input type="text" class="form-control">
             </div>
             <div class="form-group">
-                <label>Image</label>
+                <label>Afbeelding</label>
                 <input type="file" class="form-control">
             </div>
-            <button id="btn_add" type="submit" class="btn btn-primary">Edit Profile</button>
+            <button id="btn_add" type="submit" class="btn btn-primary">Bewerk Profiel</button>
         </form>
     </div>
 </div>
