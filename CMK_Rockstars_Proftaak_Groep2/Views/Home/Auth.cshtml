@@ -3,6 +3,13 @@
     <div id="content_post">
         <div>
             <h1>You're authenticated!</h1>
+            <ul>
+                @foreach(var claim in User.Claims)
+                {
+                    <li>@claim.Type: @claim.Value</li>
+                }
+            </ul>
+            <h1>@User.Claims.ElementAt(1).Value</h1>
         </div>
     </div>
 </div>
