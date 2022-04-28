@@ -29,10 +29,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" width="500vh">Titel</th>
-                        <th scope="col" width="500vh">Tribe</th>
-                        <th scope="col" width="500vh">Rockstar</th>
-                        <th scope="col" width="1000vh">Acties</th>
+                        <th scope="col">Titel</th>
+                        <th scope="col">Tribe</th>
+                        <th scope="col">Rockstar</th>
+                        <th scope="col">Acties</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,7 +44,7 @@
                             <td>@article.RockstarName</td>
                             <td>
                                 <a id="btn_Link" class="btn" href="/Home/Edit/@article.Id">bewerken</a>
-                                <a id="btn_Link" class="btn">opmerkingen</a>
+                                <a id="btn_Link" class="btn" asp-controller="Comment" asp-action="Index" asp-route-id="@article.Id">opmerkingen</a>
                                 <a id="btn_Delete" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">verwijderen</a>
                             </td>
                         </tr>
