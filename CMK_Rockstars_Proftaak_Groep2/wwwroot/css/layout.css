@@ -95,3 +95,27 @@
     height: 35px;
     border-radius: 100%;
 }
+
+* {
+    font-family: DIN2014-Demi;
+    font-weight: normal;
+    font-style: normal;
+}
+h1 {
+    font-size: 70px;
+}
+h2 {
+    font-size: 40px;
+}
+h3 {
+    font-size: 32px;
+}
+h4 {
+    font-size: 24px;
+}
+h5 {
+    font-size: 20px;
+}
+p {
+    font-size: 16px;
+}
