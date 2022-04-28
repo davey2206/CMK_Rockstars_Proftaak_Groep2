@@ -37,7 +37,6 @@ form {
 
 #btn_add {
     float: right;
-    width: 20%;
     height: 3em;
     background-color: #FFE000;
     color: black;
@@ -50,3 +49,7 @@ form {
         background-color: #232323;
         font-weight: bold;
     }
+
+.ck-editor__editable_inline {
+    min-height: 400px;
+}

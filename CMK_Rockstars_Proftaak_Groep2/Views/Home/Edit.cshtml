@@ -10,24 +10,31 @@
     <div id="post">
         @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { onsubmit = "return EditValue()" }))
         {
-            <div>
-                <h1 id="Title_text">Titel</h1>
-                <input id="btn_add" class="btn" type="submit" value="Bewerken" />
+            <div class="row">
+                <div class="col-10">
+                    <div class="input-group input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Titel</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Title" value="@ViewBag.article.Title">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <input id="btn_add" class="btn" type="submit" value="Bewerken" />
+                </div>
             </div>
-            <div>
-                <input hidden name="Id" value="@ViewBag.article.Id" />
-                <input hidden name="TribeId" value="@ViewBag.article.TribeId" />
-                <input hidden name="RockstarId" value="@ViewBag.article.RockstarId" />
-                <input name="Title" id="Title" value="@ViewBag.article.Title">
-                <textarea hidden id="TextContent" name="Content">@ViewBag.article.Content</textarea>
-            </div>
-        }
-        <h1 style="padding-left: 1em;">Artikel</h1>
-        <div class="editor">
+                <div>
+                    <input hidden name="Id" value="@ViewBag.article.Id" />
+                    <input hidden name="TribeId" value="@ViewBag.article.TribeId" />
+                    <input hidden name="RockstarId" value="@ViewBag.article.RockstarId" />
+                    <textarea hidden id="TextContent" name="Content">@ViewBag.article.Content</textarea>
+                </div>
+                }
+                <div class="editor">
 
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 <script>
     ClassicEditor
         .create(document.querySelector('.editor'), {

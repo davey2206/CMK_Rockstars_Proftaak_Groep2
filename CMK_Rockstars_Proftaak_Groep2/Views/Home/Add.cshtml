@@ -6,22 +6,28 @@
 }
 <script src="~/js/editer/build/ckeditor.js"></script>
 <div class="container p-5">
-    <h1>Artikel Toevoegen</h1>
+    <h2>Artikel Toevoegen</h2>
     <div id="post">
         @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { onsubmit = "return AddValue()" }))
         {
-            <div>
-                <h1 id="Title_text">Titel</h1>
-                <input id="btn_add" class="btn" type="submit" value="toevoegen" />
-            </div>
+            <div class="row">
+                <div class="col-10">
+                    <div class="input-group input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Titel</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"  name="Title">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <input id="btn_add" class="btn" type="submit" value="Toevoegen" />
+                    </div>
+                </div>
             <div>
                 <input hidden name="TribeId" value="92b75a09-acd0-410b-e6b6-08d9f79c5c28" />
                 <input hidden name="RockstarId" value="400db0b2-0316-429c-9422-08da1246c731" />
-                <input id="Title" name="Title" value="" />
-                <textarea id="TextContent" hidden name="Content"></textarea>
             </div>
         }
-        <h1 style="padding-left: 1em;">Artikel</h1>
         <div class="editor">
 
         </div>
