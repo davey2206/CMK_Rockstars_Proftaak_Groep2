@@ -6,11 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using CMK_Rockstars_Proftaak_Groep2.Models;
 using System.Net.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CMK_Rockstars_Proftaak_Groep2.Controllers
 {
     public class TeamController : Controller
     {
+        [Authorize]
         public async Task<IActionResult> IndexAsync()
         {
             List<Rockstar> rockstarList = new List<Rockstar>();

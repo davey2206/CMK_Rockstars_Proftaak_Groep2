@@ -56,12 +56,6 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize]
-        public IActionResult Auth()
-        {
-            return View();
-        }
-
         public async Task<IActionResult> EditAsync(string id)
         {
             Article article = new Article();
