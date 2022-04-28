@@ -30,11 +30,11 @@
 @import url("//hello.myfonts.net/count/353190");
 
   
-@font-face {font-family: 'DIN2014-Bold';src: url('webfonts/353190_0_0.eot');src: url('webfonts/353190_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/353190_0_0.woff2') format('woff2'),url('webfonts/353190_0_0.woff') format('woff'),url('webfonts/353190_0_0.ttf') format('truetype');}
+@font-face {font-family: 'DIN2014-Bold';src: url('/webfonts/353190_0_0.eot');src: url('/webfonts/353190_0_0.eot?#iefix') format('embedded-opentype'),url('/webfonts/353190_0_0.woff2') format('woff2'),url('/webfonts/353190_0_0.woff') format('woff'),url('/webfonts/353190_0_0.ttf') format('truetype');}
  
   
-@font-face {font-family: 'DIN2014-Regular';src: url('webfonts/353190_1_0.eot');src: url('webfonts/353190_1_0.eot?#iefix') format('embedded-opentype'),url('webfonts/353190_1_0.woff2') format('woff2'),url('webfonts/353190_1_0.woff') format('woff'),url('webfonts/353190_1_0.ttf') format('truetype');}
+@font-face {font-family: 'DIN2014-Regular';src: url('/webfonts/353190_1_0.eot');src: url('/webfonts/353190_1_0.eot?#iefix') format('embedded-opentype'),url('/webfonts/353190_1_0.woff2') format('woff2'),url('/webfonts/353190_1_0.woff') format('woff'),url('/webfonts/353190_1_0.ttf') format('truetype');}
  
   
-@font-face {font-family: 'DIN2014-Demi';src: url('webfonts/353190_2_0.eot');src: url('webfonts/353190_2_0.eot?#iefix') format('embedded-opentype'),url('webfonts/353190_2_0.woff2') format('woff2'),url('webfonts/353190_2_0.woff') format('woff'),url('webfonts/353190_2_0.ttf') format('truetype');}
+@font-face {font-family: 'DIN2014-Demi';src: url('/webfonts/353190_2_0.eot');src: url('/webfonts/353190_2_0.eot?#iefix') format('embedded-opentype'),url('/webfonts/353190_2_0.woff2') format('woff2'),url('/webfonts/353190_2_0.woff') format('woff'),url('/webfonts/353190_2_0.ttf') format('truetype');}
  

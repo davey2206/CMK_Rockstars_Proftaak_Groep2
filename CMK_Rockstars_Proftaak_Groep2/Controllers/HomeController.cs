@@ -27,7 +27,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             List<Article> articleList = new List<Article>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article"))
+                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/All"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     articleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
