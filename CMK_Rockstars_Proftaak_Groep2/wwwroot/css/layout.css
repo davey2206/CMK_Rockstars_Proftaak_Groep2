@@ -101,21 +101,21 @@
     font-weight: normal;
     font-style: normal;
 }
-h1 {
+h1, .ck-heading_heading1 {
     font-size: 70px;
 }
-h2 {
+h2, ck-heading_heading2 {
     font-size: 40px;
 }
-h3 {
+h3, ck-heading_heading3 {
     font-size: 32px;
 }
-h4 {
+h4, ck-heading_heading4 {
     font-size: 24px;
 }
-h5 {
+h5, ck-heading_heading5 {
     font-size: 20px;
 }
-p {
+p, .ck-heading_paragraph {
     font-size: 16px;
 }
