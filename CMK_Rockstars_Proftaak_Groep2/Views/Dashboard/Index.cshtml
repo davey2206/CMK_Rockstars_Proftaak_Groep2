@@ -5,6 +5,42 @@
     <link href="@Url.Content("~/css/Dashboard.css")" rel="stylesheet" />
 }
 
-<script>
-    $('#Dashboard').addClass('navContainer__item navContainer__item_state-active');
-</script>
+<div class="container p-5">
+    <div class="text-center">
+        <div class="row">
+            <div class="col-10 text-left">
+                <h1>Dashboard</h1>
+            </div>
+        </div>
+        <div class="card" id="dashboard_card">
+            <div class="item card_title"> Meest recent </div>
+                <ul class="list-unstyled item">
+                    <li class="media">
+                        <img class="mr-3" width="64px" height="64px" src="~/img/Logo.png">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">Artikel 1</h5>
+                            Artikel 1
+                        </div>
+                    </li>
+                    <li class="media my-4">
+                        <img class="mr-3" width="64px" height="64px" src="~/img/Logo.png">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">Artikel 2</h5>
+                            Artikel 2
+                        </div>
+                    </li>
+                    <li class="media">
+                        <img class="mr-3" width="64px" height="64px" src="~/img/Logo.png">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">Artikel 3</h5>
+                            Artikel 3
+                        </div>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</div>
+
+        <script>
+            $('#Dashboard').addClass('navContainer__item navContainer__item_state-active');
+        </script>
