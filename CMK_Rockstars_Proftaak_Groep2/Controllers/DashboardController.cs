@@ -14,9 +14,6 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         public async Task<IActionResult> IndexAsync()
         {
             List<Article> articleList = new List<Article>();
-            List<Article> LastArticles = new List<Article>();
-            List<Article> TopTotalViews = new List<Article>();
-            List<Article> TopViews = new List<Article>();
             using (var httpClient = new HttpClient())
             {
                 using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/All"))
@@ -26,26 +23,49 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                 }
             }
 
-            LastArticles = articleList;
-            TopTotalViews = articleList;
-            TopViews = articleList;
-
-            LastArticles.Sort((x, y) => DateTime.Compare(x.publishDate, y.publishDate));
-            LastArticles.RemoveRange(0, LastArticles.Count - 3);
-            LastArticles.Reverse();
-
-            TopTotalViews = TopTotalViews.OrderBy(a => a.totalViewCount).ToList();
-            TopTotalViews.RemoveRange(0, TopTotalViews.Count - 3);
-            TopTotalViews.Reverse();
-
-            TopViews = TopViews.OrderBy(a => a.viewCount).ToList();
-            TopViews.RemoveRange(0, TopViews.Count - 3);
-            TopViews.Reverse();
-
-            ViewData["LastArticles"] = LastArticles;
-            ViewData["TopTotalViews"] = TopTotalViews;
-            ViewData["TopViews"] = TopViews;
+            ViewData["LastArticles"] = GetLastArticles(articleList);
+            ViewData["TopTotalViews"] = GetTopTotalViews(articleList);
+            ViewData["TopViews"] = GetTopViews(articleList);
             return View();
+        }
+
+        public List<Article> GetLastArticles(List<Article> articleList)
+        {
+            List<Article> articles = new List<Article>();
+            articleList.Sort((x, y) => DateTime.Compare(x.publishDate, y.publishDate));
+            articleList.Reverse();
+            for (int i = 0; i < 3; i++)
+            {
+                articles.Add(articleList[i]);
+            }
+
+            return articles;
+        }
+
+        public List<Article> GetTopTotalViews(List<Article> articleList)
+        {
+            List<Article> articles = new List<Article>();
+            articleList = articleList.OrderBy(a => a.totalViewCount).ToList();
+            articleList.Reverse();
+            for (int i = 0; i < 3; i++)
+            {
+                articles.Add(articleList[i]);
+            }
+
+            return articles;
+        }
+
+        public List<Article> GetTopViews(List<Article> articleList)
+        {
+            List<Article> articles = new List<Article>();
+            articleList = articleList.OrderBy(a => a.viewCount).ToList();
+            articleList.Reverse();
+            for (int i = 0; i < 3; i++)
+            {
+                articles.Add(articleList[i]);
+            }
+
+            return articles;
         }
     }
 }
