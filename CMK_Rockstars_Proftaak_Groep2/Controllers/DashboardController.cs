@@ -11,70 +11,41 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
 {
     public class DashboardController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            var LastArticels = GetLastArticelsAsync();
-            var TopTotalViews = GetTopTotalViewsAsync();
-            var TopViews = GetTopViewsAsync();
+            List<Article> articleList = new List<Article>();
+            List<Article> LastArticles = new List<Article>();
+            List<Article> TopTotalViews = new List<Article>();
+            List<Article> TopViews = new List<Article>();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/All"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    articleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
+                }
+            }
 
-            ViewData["LastArticels"] = LastArticels;
+            LastArticles = articleList;
+            TopTotalViews = articleList;
+            TopViews = articleList;
+
+            LastArticles.Sort((x, y) => DateTime.Compare(x.publishDate, y.publishDate));
+            LastArticles.RemoveRange(0, LastArticles.Count - 3);
+            LastArticles.Reverse();
+
+            TopTotalViews = TopTotalViews.OrderBy(a => a.totalViewCount).ToList();
+            TopTotalViews.RemoveRange(0, TopTotalViews.Count - 3);
+            TopTotalViews.Reverse();
+
+            TopViews = TopViews.OrderBy(a => a.viewCount).ToList();
+            TopViews.RemoveRange(0, TopViews.Count - 3);
+            TopViews.Reverse();
+
+            ViewData["LastArticles"] = LastArticles;
             ViewData["TopTotalViews"] = TopTotalViews;
             ViewData["TopViews"] = TopViews;
             return View();
-        }
-        public async Task<List<Article>> GetLastArticelsAsync()
-        {
-            List<Article> articleList = new List<Article>();
-            using (var httpClient = new HttpClient())
-            {
-                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/All"))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    articleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
-                }
-            }
-            articleList.Sort((x, y) => DateTime.Compare(x.publishDate, y.publishDate));
-            articleList.RemoveRange(0, articleList.Count - 3);
-            articleList.Reverse();
-
-            return articleList;
-        }
-
-        public async Task<List<Article>> GetTopTotalViewsAsync()
-        {
-            List<Article> articleList = new List<Article>();
-            using (var httpClient = new HttpClient())
-            {
-                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/All"))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    articleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
-                }
-            }
-
-            articleList = articleList.OrderBy(a => a.totalViewCount).ToList();
-            articleList.RemoveRange(0, articleList.Count - 3);
-            articleList.Reverse();
-
-            return articleList;
-        }
-        public async Task<List<Article>> GetTopViewsAsync()
-        {
-            List<Article> articleList = new List<Article>();
-            using (var httpClient = new HttpClient())
-            {
-                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/All"))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    articleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
-                }
-            }
-
-            articleList = articleList.OrderBy(a => a.viewCount).ToList();
-            articleList.RemoveRange(0, articleList.Count - 3);
-            articleList.Reverse();
-
-            return articleList;
         }
     }
 }

@@ -6,26 +6,85 @@
 }
 
 <div class="container p-5">
-    <div class="text-center">
-        <div class="row">
-            <div class="col-10 text-left">
-                <h1>Dashboard</h1>
+    <div class="row">
+        <div class="col-10 text-left">
+            <h1>Dashboard</h1>
+        </div>
+    </div>
+    <div id="cards">
+        <div class="card" id="dashboard_card">
+            <div class="card_title"> 
+                <h3>Meest recent</h3> 
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Titel</th>
+                            <th scope="col">Datum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var article in ViewData["LastArticles"] as List<Article>)
+                        {
+                        <tr>
+                            <td>@article.Title</td>
+                            <td>@article.publishDate</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
+
         <div class="card" id="dashboard_card">
-            <div class="item card_title"> Meest recent </div>
-            <ul class="list-unstyled item">
-                @foreach (var article in ViewData["LastArticles"] as List<Article>)
-                {
-                    <li class="media">
-                        <img class="mr-3" width="64px" height="64px" src="~/img/Logo.png">
-                        <div class="media-body">
-                            <h5 class="mt-0 mb-1">@article.Title</h5>
-                            
-                        </div>
-                    </li>
-                }
-            </ul>
+            <div class="card_title">
+                <h3>Meest kijkers</h3>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Titel</th>
+                            <th scope="col">TotalViews</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var article in ViewData["TopTotalViews"] as List<Article>)
+                        {
+                        <tr>
+                            <td>@article.Title</td>
+                            <td>@article.totalViewCount</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card" id="dashboard_card">
+            <div class="card_title">
+                <h3>meeste bekeken</h3>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Titel</th>
+                            <th scope="col">Views</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var article in ViewData["TopViews"] as List<Article>)
+                        {
+                        <tr>
+                            <td>@article.Title</td>
+                            <td>@article.viewCount</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

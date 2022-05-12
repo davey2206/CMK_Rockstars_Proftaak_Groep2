@@ -4,9 +4,16 @@
     background-color: #FFE000;
 }
 
-#dashboard_card {
+#cards {
     display: flex;
-    width: 100%;
+    flex-flow: wrap;
+    justify-content: space-between;
+}
+
+#dashboard_card {
+    margin: 5px;
+    display: flex;
+    width: 49%;
     max-width: 700px;
     padding: 15px 25px;
 }
@@ -24,4 +31,8 @@
 .item {
     order: 3;
     align-self: flex-start;
+}
+
+table{
+    width: 100%;
 }
