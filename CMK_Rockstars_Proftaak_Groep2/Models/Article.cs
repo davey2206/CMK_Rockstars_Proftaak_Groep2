@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace CMK_Rockstars_Proftaak_Groep2.Models
 {
@@ -14,5 +15,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Models
         public string TribeName { get; set; }
         [Newtonsoft.Json.JsonProperty("RockstarName", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string RockstarName { get; set; }
+
+        public List<Comment> Comments { get; set; }
     }
 }
