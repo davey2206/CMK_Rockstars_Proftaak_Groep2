@@ -13,16 +13,16 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
     {
         public IActionResult Index()
         {
-            var LastArtikels = GetLastArtikelsAsync();
+            var LastArticels = GetLastArticelsAsync();
             var TopTotalViews = GetTopTotalViewsAsync();
             var TopViews = GetTopViewsAsync();
 
-            ViewData["LastArtikels"] = LastArtikels;
+            ViewData["LastArticels"] = LastArticels;
             ViewData["TopTotalViews"] = TopTotalViews;
             ViewData["TopViews"] = TopViews;
             return View();
         }
-        public async Task<List<Article>> GetLastArtikelsAsync()
+        public async Task<List<Article>> GetLastArticelsAsync()
         {
             List<Article> articleList = new List<Article>();
             using (var httpClient = new HttpClient())
