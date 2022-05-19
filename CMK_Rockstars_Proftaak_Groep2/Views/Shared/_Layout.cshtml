@@ -18,10 +18,11 @@
             <img id="sidebar__logo" src="~/img/logo.jpg" />
             <div id="sidebar__navContainer">
                 <ul id="sidebar_itemContainer">
-                    <a id="Home" class="navContainer__item" asp-action="Index" asp-controller="Home"><img class="navItem__img" src="~/Icons/home.png" alt="Home" /></a>
+                    <a id="Dashboard" class="navContainer__item" asp-action="Index" asp-controller="Dashboard"><img class="navItem__img" src="~/Icons/home.png" alt="Home" /></a>
+                    <a id="Home" class="navContainer__item" asp-action="Index" asp-controller="Home"><img class="navItem__img" src="~/Icons/articles.png" alt="Home" /></a>
                     <a id="Team" class="navContainer__item" asp-action="Index" asp-controller="Team"><img class="navItem__img" src="~/Icons/team.png" alt="Our team" /></a>
                     <a id="Add" class="navContainer__item" asp-action="Add" asp-controller="Home"><img class="navItem__img" src="~/Icons/add.png" alt="Add" /></a>
-                    <a id="Add" class="navContainer__item" asp-action="Auth" asp-controller="Login"><img class="navItem__img" src="~/Icons/cloud.svg" alt="Auth" /></a>
+                    @*<a id="add" class="navcontainer__item" asp-action="auth" asp-controller="login"><img class="navitem__img" src="~/icons/cloud.svg" alt="auth" /></a>*@
                 </ul>
             </div>
             <div id="profilepicContainer">
