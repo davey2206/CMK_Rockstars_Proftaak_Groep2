@@ -1,29 +1,72 @@
-﻿@{
-    ViewData["Title"] = "Profiel Pagina";
+﻿@using Newtonsoft.Json.Linq
+@{
+    ViewData["Title"] = "User Profile fetched from MS Graph";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@section css {
-    <link href="@Url.Content("~/css/Profile.css")" rel="stylesheet" />
-}
+<br />
+<br />
+<h1>Signed-in user's Profile</h1>
 
-<div class="container">
-    <div id="content_profile">
-        <div>
-            <h1>Mijn Profiel</h1>
-        </div>
-        <form class="rounded mt-2">
-            <div class="form-group">
-                <label>Gebruikersnaam</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Omschrijving</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Afbeelding</label>
-                <input type="file" class="form-control">
-            </div>
-            <button id="btn_add" type="submit" class="btn btn-primary">Bewerk Profiel</button>
-        </form>
-    </div>
-</div>
+<table class="table table-striped table-condensed" style="font-family: monospace" border="1">
+    <thead>
+        <tr>
+            <th>
+                Profile picture
+            </th>
+            <th>
+                @{
+                    if (ViewData["photo"] != null)
+                    {
+                        <img style="margin: 5px 0; width: 150px" src="data:image/jpeg;base64, @ViewData["photo"]" />
+                    }
+                    else
+                    {
+                        <p>No Pic available for this user. Upload a pic for this user in the Azure portal</p>
+                    }
+                }
+            </th>
+            <th></th>
+        </tr>
+        @{
+            var user = ViewData["me"] as Microsoft.Graph.User;
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    @user.Id
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>
+                    Display Name
+                </th>
+                <th>
+                    @user.DisplayName
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>
+                    Mail
+                </th>
+                <th>
+                    @user.Mail
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>
+                    UserPrincipalName
+                </th>
+                <th>
+                    @user.UserPrincipalName
+                </th>
+                <th></th>
+            </tr>
+        }
+    </thead>
+    <tbody>
+    </tbody>
+</table>
