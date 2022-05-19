@@ -15,7 +15,12 @@ namespace CMK_Rockstars_Proftaak_Groep2.Models
         public string TribeName { get; set; }
         [Newtonsoft.Json.JsonProperty("RockstarName", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string RockstarName { get; set; }
-
+        [Newtonsoft.Json.JsonProperty("publishDate", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public DateTime publishDate { get; set; }
+        [Newtonsoft.Json.JsonProperty("viewCount", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int viewCount { get; set; }
+        [Newtonsoft.Json.JsonProperty("totalViewCount", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int totalViewCount { get; set; }
         public List<Comment> Comments { get; set; }
     }
 }

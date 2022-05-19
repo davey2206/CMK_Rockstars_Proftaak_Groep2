@@ -12,7 +12,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
 {
     public class TeamController : Controller
     {
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> IndexAsync()
         {
             List<Rockstar> rockstarList = new List<Rockstar>();
