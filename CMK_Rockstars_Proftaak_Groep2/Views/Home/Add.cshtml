@@ -20,8 +20,8 @@
                     </div>
                 </div><!--
                 --><div class="col-2" id="buttonWrap">
-                    <input id="btn_concept" class="btn" type="submit" name="concept" value="Opslaan als concept"/>
-                    <input id="btn_add" class="btn" type="submit" name="add" value="Toevoegen" />
+                    <input id="btn_concept" class="btn" type="submit" name="submitButton" value="Concept"/>
+                    <input id="btn_add" class="btn" type="submit" name="submitButton" value="Toevoegen" />
                 </div>
             </div>
             <div>
@@ -72,11 +72,6 @@
 <script>
     function AddValue() {
         document.getElementById("TextContent").value = editor.getData();
-        if (isset($_POST['add'])) {
-            document.getElementById("Published").value = true;
-        } else {
-            document.getElementById("Published").value = false;
-        }
         return true;
     }
 

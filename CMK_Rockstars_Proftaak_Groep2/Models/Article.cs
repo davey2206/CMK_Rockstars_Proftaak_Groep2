@@ -16,6 +16,8 @@ namespace CMK_Rockstars_Proftaak_Groep2.Models
         [Newtonsoft.Json.JsonProperty("RockstarName", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string RockstarName { get; set; }
 
+        public bool published { get; set; }
+
         public List<Comment> Comments { get; set; }
     }
 }
