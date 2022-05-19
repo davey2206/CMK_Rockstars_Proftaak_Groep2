@@ -27,6 +27,7 @@ namespace CMK_Rockstars_Proftaak_Groep2
         {
             services.AddControllersWithViews();
 
+
             //services.AddAuthentication(options =>
             //{
             //    options.DefaultAuthenticateScheme = "cookie";
@@ -36,6 +37,7 @@ namespace CMK_Rockstars_Proftaak_Groep2
             //{
             //    options.Licensee = "DEMO";
             //    options.LicenseKey = "eyJTb2xkRm9yIjowLjAsIktleVByZXNldCI6NiwiU2F2ZUtleSI6ZmFsc2UsIkxlZ2FjeUtleSI6ZmFsc2UsIlJlbmV3YWxTZW50VGltZSI6IjAwMDEtMDEtMDFUMDA6MDA6MDAiLCJhdXRoIjoiREVNTyIsImV4cCI6IjIwMjItMDUtMDdUMDI6NTI6NTEuMTI2OTk3NiswMDowMCIsImlhdCI6IjIwMjItMDQtMDdUMDI6NTI6NTEiLCJvcmciOiJERU1PIiwiYXVkIjoyfQ==.f41bmB1kRLBSB8wgUGZYJfwI8AcmFjf7sMfJ1HBSBcHJ4ENGb+CJWDQmjX2doq3iqJDsC6ixZEYQn8vL/6c9AtdoV8fwt/dZp1HyWppJFCnV2f92QWsN50xsIuOjPUlRASPib5+67x+dOwyTM890+Wmgdh4ZX+XW/UKcGsd7J+SDUQIeic7EwXSoz0HUybd5p56GhEjGgMB4S9vjm6WkAKC6GT952HSjVbIYea3+BMNGdwO5m3DBD1AsRCCvvQh2I47OnhuThU1xYXRfmQFzkB5Ex//pFsoCmmxLji2hnPafc2DF0F/XVzHAyBZ2eWAgxYsC6bC4P2qaYwh29AmjxqD+eD/qshNhbxQAA09RO3+X6X9yHazQpXfDofWO/utfgM0jQ7/FBMxyPtkjtFOQfDjH04/l/xW3GfY4fvC/bxvRdJ5OchT81XEO8kgq4x3PnRkfwK8QteXOk7sdol8XdBlSn74S9Uoezlasc0tvmGTDDw3b1aYbL2sL0mHaR4HG2gdkM/UQlhdF7oJSJfYar+jt+lkEz5Ld38yo1Ym8A7QqOHHehhek81KgnphVRbs3q4dy+jw9ClwYSIOnX7YTQcKISaz2KhQxgk9MD4cSMG3qmAfkuvde/tBnZMMExrwoj2f6P72+/lUgA8QUNTIQFdKx2BKOrwHOo9wDEEYwKLY=";
+
 
             //    options.CallbackPath = "/signin-saml";
             //    options.SignInScheme = "cookie";

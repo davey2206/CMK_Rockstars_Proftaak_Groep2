@@ -10,22 +10,25 @@
     <div id="post">
         @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { onsubmit = "return AddValue()" }))
         {
-            <div class="row">
-                <div class="col-10">
+            <div class="row" id="articleHeader">
+                <div class="col-10" id="articleTitleWrap">
                     <div class="input-group input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Titel</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"  name="Title">
                         </div>
+                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"  name="Title">
                     </div>
-                    <div class="col-2">
-                        <input id="btn_add" class="btn" type="submit" value="Toevoegen" />
-                    </div>
+                </div><!--
+                --><div class="col-2" id="buttonWrap">
+                    <input id="btn_concept" class="btn" type="submit" name="concept" value="Opslaan als concept"/>
+                    <input id="btn_add" class="btn" type="submit" name="add" value="Toevoegen" />
                 </div>
+            </div>
             <div>
                 <input hidden name="TribeId" value="92b75a09-acd0-410b-e6b6-08d9f79c5c28" />
                 <input hidden name="RockstarId" value="400db0b2-0316-429c-9422-08da1246c731" />
+                <input hidden id="Published" name="Published" value="" />
+                <textarea hidden id="TextContent" name="Content"></textarea>
             </div>
         }
         <div class="editor">
@@ -69,6 +72,11 @@
 <script>
     function AddValue() {
         document.getElementById("TextContent").value = editor.getData();
+        if (isset($_POST['add'])) {
+            document.getElementById("Published").value = true;
+        } else {
+            document.getElementById("Published").value = false;
+        }
         return true;
     }
 
