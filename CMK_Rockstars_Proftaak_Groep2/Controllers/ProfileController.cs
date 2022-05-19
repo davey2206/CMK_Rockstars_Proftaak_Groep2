@@ -1,7 +1,6 @@
 ﻿using Azure;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
-using CMK_Rockstars_Proftaak_Groep2.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -13,8 +12,9 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using CMK_Rockstars_Proftaak_Groep2.Models;
 
-namespace WebApp_OpenIDConnect_DotNet_graph.Controllers
+namespace CMK_Rockstars_Proftaak_Groep2.Controllers
 {
     [Authorize]
     public class ProfileController : Controller
@@ -61,7 +61,7 @@ namespace WebApp_OpenIDConnect_DotNet_graph.Controllers
             {
                 try
                 {
-                    Console.WriteLine($"{svcex}");
+                    System.Diagnostics.Debug.WriteLine($"{svcex}");
                     string claimChallenge = WwwAuthenticateParameters.GetClaimChallengeFromResponseHeaders(svcex.ResponseHeaders);
                     _consentHandler.ChallengeUser(_graphScopes, claimChallenge);
                     return new EmptyResult();
@@ -83,7 +83,7 @@ namespace WebApp_OpenIDConnect_DotNet_graph.Controllers
             }
             catch (Exception pex)
             {
-                Console.WriteLine($"{pex.Message}");
+                System.Diagnostics.Debug.WriteLine($"{pex.Message}");
                 ViewData["Photo"] = null;
             }
 
