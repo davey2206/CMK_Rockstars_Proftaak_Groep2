@@ -36,7 +36,6 @@ form {
 }
 
 #btn_add {
-    float: right;
     height: 3em;
     background-color: #FFE000;
     color: black;
@@ -44,12 +43,42 @@ form {
     transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
 }
 
-    #btn_add:hover {
-        color: #FFE000;
-        background-color: #232323;
-        font-weight: bold;
-    }
+#btn_add:hover {
+    color: #FFE000;
+    background-color: #232323;
+    font-weight: bold;
+}
 
 .ck-editor__editable_inline {
     min-height: 400px;
+}
+
+#articleHeader {
+    display: block;
+}
+
+#articleTitleWrap {
+    display: inline-block;
+    width: calc(100% - 260px);
+}
+
+#buttonWrap {
+    display: inline-block;
+    max-width: 100%;
+    width: 260px;
+    padding: 0;
+}
+
+#btn_concept {
+    height: 3em;
+    background-color: rgba(0, 0, 0, .05);
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+
+#btn_concept:hover {
+    color: #FFE000;
+    background-color: #232323;
+    font-weight: bold;
 }

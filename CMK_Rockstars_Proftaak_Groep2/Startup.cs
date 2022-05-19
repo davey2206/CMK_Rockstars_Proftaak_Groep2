@@ -27,6 +27,7 @@ namespace CMK_Rockstars_Proftaak_Groep2
         {
             services.AddControllersWithViews();
 
+            /*
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = "cookie";
@@ -48,6 +49,7 @@ namespace CMK_Rockstars_Proftaak_Groep2
                 options.IdentityProviderMetadataAddress = "https://login.microsoftonline.com/0e199aab-b45d-4371-aecf-971d3ae0f357/federationmetadata/2007-06/federationmetadata.xml?appid=6d06b9d0-64eb-4c7f-8f8a-d8df1b6f11ba";
                 options.TimeComparisonTolerance = 120;
             });
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
