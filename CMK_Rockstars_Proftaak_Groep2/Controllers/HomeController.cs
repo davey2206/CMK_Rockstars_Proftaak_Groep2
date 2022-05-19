@@ -82,8 +82,18 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> EditAsync([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName")] Article article)
+        public async Task<IActionResult> EditAsync([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName")] string submitButton, Article article)
         {
+            switch (submitButton)
+            {
+                case "Concept":
+                    article.published = false;
+                    break;
+                case "Bewerkten":
+                    article.published = true;
+                    break;
+            }
+
             using (var httpClient = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(article), Encoding.UTF8, "application/json");
