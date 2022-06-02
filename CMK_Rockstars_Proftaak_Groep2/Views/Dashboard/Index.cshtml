@@ -5,90 +5,78 @@
     <link href="@Url.Content("~/css/Dashboard.css")" rel="stylesheet" />
 }
 
-<div class="container p-5">
+<div id="dashboard_container">
     <div class="row">
         <div class="col-10 text-left">
             <h1>Dashboard</h1>
         </div>
     </div>
     <div id="cards">
-        <div class="card" id="dashboard_card">
+        <div class="card dashboard_card">
             <div class="card_title">
                 <h3>Meest recent</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body card_body">
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Titel</th>
-                            <th scope="col">Datum</th>
-                            <th scope="col">link</th>
+                    <tr>
+                        <th scope="col">Titel</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">link</th>
+                    </tr>
+                    @foreach (var article in ViewData["LastArticles"] as List<Article>)
+                    {
+                        <tr class="table_row">
+                            <td>@article.Title</td>
+                            <td>@article.publishDate</td>
+                            <td class="td__btn"><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var article in ViewData["LastArticles"] as List<Article>)
-                        {
-                            <tr>
-                                <td>@article.Title</td>
-                                <td>@article.publishDate</td>
-                                <td><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
-                            </tr>
-                        }
-                    </tbody>
+                    }
                 </table>
             </div>
         </div>
 
-        <div class="card" id="dashboard_card">
+        <div class="card dashboard_card">
             <div class="card_title">
                 <h3>Meest bekeken</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body card_body">
                 <table class="table">
-                    <thead>
+                    <tr>
+                        <th scope="col">Titel</th>
+                        <th scope="col">Total Views</th>
+                        <th scope="col">link</th>
+                    </tr>
+                    @foreach (var article in ViewData["TopTotalViews"] as List<Article>)
+                    {
                         <tr>
-                            <th scope="col">Titel</th>
-                            <th scope="col">Total Views</th>
-                            <th scope="col">link</th>
+                            <td>@article.Title</td>
+                            <td>@article.totalViewCount</td>
+                            <td class="td__btn"><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var article in ViewData["TopTotalViews"] as List<Article>)
-                        {
-                            <tr>
-                                <td>@article.Title</td>
-                                <td>@article.totalViewCount</td>
-                                <td><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
-                            </tr>
-                        }
-                    </tbody>
+                    }
                 </table>
             </div>
         </div>
 
-        <div class="card" id="dashboard_card">
+        <div class="card dashboard_card">
             <div class="card_title">
                 <h3>Meeste kijkers</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body card_body">
                 <table class="table">
-                    <thead>
+                    <tr>
+                        <th scope="col">Titel</th>
+                        <th scope="col">Views</th>
+                        <th scope="col">link</th>
+                    </tr>
+                    @foreach (var article in ViewData["TopViews"] as List<Article>)
+                    {
                         <tr>
-                            <th scope="col">Titel</th>
-                            <th scope="col">Views</th>
-                            <th scope="col">link</th>
+                            <td>@article.Title</td>
+                            <td>@article.viewCount</td>
+                            <td class="td__btn"><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var article in ViewData["TopViews"] as List<Article>)
-                        {
-                            <tr>
-                                <td>@article.Title</td>
-                                <td>@article.viewCount</td>
-                                <td><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
-                            </tr>
-                        }
-                    </tbody>
+                    }
                 </table>
             </div>
         </div>

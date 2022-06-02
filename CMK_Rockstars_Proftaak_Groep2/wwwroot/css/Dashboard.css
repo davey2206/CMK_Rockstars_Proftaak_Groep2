@@ -1,4 +1,8 @@
-﻿#nav_Home {
+﻿#dashboard_container {
+    padding: 3rem 10vw;
+}
+
+#nav_Home {
     color: black;
     font-weight: bold;
     background-color: #FFE000;
@@ -10,12 +14,17 @@
     justify-content: space-between;
 }
 
-#dashboard_card {
+.dashboard_card {
     margin: 5px;
     display: flex;
-    width: 49%;
+    width: calc(50% - 10px);
     max-width: 700px;
-    padding: 15px 25px;
+
+    padding: 25px 18px;
+}
+
+.card_body {
+    padding: 0;
 }
 
 .container {
@@ -24,9 +33,40 @@
     align-content: space-around;
 }
 
-.card_title {
-    margin-bottom: 10px;
+.card_title h3 {
+    padding: 0 12px;
+    font-size: 25px;
 }
+
+th {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #F6F6F6;
+}
+
+td {
+    opacity: .75;
+}
+
+.table {
+    margin: 0;
+}
+
+.table .td__btn {
+    padding: 5px 12px;
+}
+
+.table th {
+    border: none;
+}
+
+.table td {
+    border: none;
+}
+
 
 .item {
     order: 3;
@@ -57,4 +97,17 @@ table{
 }
 .modal-content{
     width: 80vw;
+}
+
+@media only screen and (max-width: 1200px){
+    .dashboard_card {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 800px){
+    #dashboard_container {
+        padding: 3rem 5vw;
+    }
 }

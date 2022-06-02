@@ -2,7 +2,7 @@
     background-color: #efefef;
 }
 #content{
-    padding-left: 40px;
+    padding-left: max(60px, 4%);
 }
 #sidebar {
     background-color: white;
