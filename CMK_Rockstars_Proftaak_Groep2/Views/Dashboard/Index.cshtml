@@ -23,13 +23,16 @@
                         <th scope="col">Datum</th>
                         <th scope="col">link</th>
                     </tr>
-                    @foreach (var article in ViewData["LastArticles"] as List<Article>)
+                    @if (ViewData["LastArticles"] != null)
                     {
-                        <tr class="table_row">
-                            <td>@article.Title</td>
-                            <td>@article.publishDate</td>
-                            <td class="td__btn"><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
-                        </tr>
+                        @foreach (var article in ViewData["LastArticles"] as List<Article>)
+                        {
+                            <tr class="table_row">
+                                <td>@article.Title</td>
+                                <td>@article.publishDate</td>
+                                <td class="td__btn"><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
+                            </tr>
+                        }
                     }
                 </table>
             </div>
@@ -46,13 +49,16 @@
                         <th scope="col">Total Views</th>
                         <th scope="col">link</th>
                     </tr>
-                    @foreach (var article in ViewData["TopTotalViews"] as List<Article>)
+                    @if (ViewData["TopTotalViews"] != null)
                     {
-                        <tr>
-                            <td>@article.Title</td>
-                            <td>@article.totalViewCount</td>
-                            <td class="td__btn"><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
-                        </tr>
+                        @foreach (var article in ViewData["TopTotalViews"] as List<Article>)
+                        {
+                            <tr>
+                                <td>@article.Title</td>
+                                <td>@article.totalViewCount</td>
+                                <td class="td__btn"><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
+                            </tr>
+                        }
                     }
                 </table>
             </div>
@@ -69,40 +75,45 @@
                         <th scope="col">Views</th>
                         <th scope="col">link</th>
                     </tr>
-                    @foreach (var article in ViewData["TopViews"] as List<Article>)
+                    @if (ViewData["TopViews"] != null)
                     {
-                        <tr>
-                            <td>@article.Title</td>
-                            <td>@article.viewCount</td>
-                            <td class="td__btn"><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
-                        </tr>
+                        @foreach (var article in ViewData["TopViews"] as List<Article>)
+                        {
+                            <tr>
+                                <td>@article.Title</td>
+                                <td>@article.viewCount</td>
+                                <td class="td__btn"><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
+                            </tr>
+                        }
                     }
                 </table>
             </div>
         </div>
     </div>
 </div>
-
-@foreach (var article in ViewData["Articles"] as List<Article>)
+@if (ViewData["Articles"] != null)
 {
-    <div class="modal fade" id="Modal-@article.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header" id="modal_header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">@article.Title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @Html.Raw(article.Content)
-                </div>
-                <div class="modal-footer" id="modal_header">
-                    <button type="button" class="btn btn-dark" id="modal_btn_close" data-dismiss="modal">Sluit</button>
+    @foreach (var article in ViewData["Articles"] as List<Article>)
+    {
+        <div class="modal fade" id="Modal-@article.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" id="modal_header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">@article.Title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @Html.Raw(article.Content)
+                    </div>
+                    <div class="modal-footer" id="modal_header">
+                        <button type="button" class="btn btn-dark" id="modal_btn_close" data-dismiss="modal">Sluit</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
 }
 
 <script>
