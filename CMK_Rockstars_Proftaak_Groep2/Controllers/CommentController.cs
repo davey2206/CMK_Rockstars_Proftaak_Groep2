@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using CMK_Rockstars_Proftaak_Groep2.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +50,24 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             }
 
             return RedirectToAction("Index", new { id = articleId });
-        }   
+        }
+
+        // UPDATE
+        [HttpPost]
+        public async Task<IActionResult> AcceptAsync([Bind("Id, ArticleId")] Comment comment)
+        {
+            comment.Approved = true;
+            using (var httpClient = new HttpClient())
+            {
+                StringContent content = new StringContent(JsonConvert.SerializeObject(comment), Encoding.UTF8, "application/json");
+
+                using (var response = await httpClient.PutAsync("https://rockstar-api.azurewebsites.net/api/comment/" + comment.Id, content))
+                {
+                    await response.Content.ReadAsStringAsync();
+                }
+            }
+
+            return RedirectToAction("Index", new { id = comment.ArticleId });
+        }
     }
 }

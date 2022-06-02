@@ -4,9 +4,9 @@
 }
 
 @section css {
-    <link href="@Url.Content("~/css/Home.css")" rel="stylesheet"/>
-    <link href="@Url.Content("~/css/Delete.css")" rel="stylesheet"/>
-    <link href="@Url.Content("~/css/ModelOverwrite.css")" rel="stylesheet"/>
+    <link href="@Url.Content("~/css/Home.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/Delete.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/ModelOverwrite.css")" rel="stylesheet" />
 }
 
 <div class="container p-5">
@@ -24,30 +24,33 @@
             </div>
             <table class="table">
                 <thead>
-                <tr>
-                    <th scope="col">Gebruikersnaam</th>
-                    <th scope="col">Opmerking</th>
-                    <th scope="col">Goedgekeurd</th>
-                    <th scope="col">Acties</th>
-                </tr>
+                    <tr>
+                        <th scope="col">Gebruikersnaam</th>
+                        <th scope="col">Opmerking</th>
+                        <th scope="col">Goedgekeurd</th>
+                        <th scope="col">Acties</th>
+                    </tr>
                 </thead>
                 <tbody>
-                @if (Model.Comments != null)
-                {
-                    foreach (var comment in Model.Comments)
+                    @if (Model.Comments != null)
                     {
-                        <tr>
-                            <th scope="row">@comment.UserName</th>
-                            <td>@comment.CommentText</td>
-                            <td>@comment.Approved</td>
-                            <td>
-                                @*<a id="btn_Link" class="btn" href="/Home/Edit/@article.Id">bewerken</a>*@
-                                @*<a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@comment.Id">Accepteer</a>*@
-                                <a id="btn_Delete" class="btn" data-toggle="modal" data-target="#Modal-@comment.Id">verwijderen</a>
-                            </td>
-                        </tr>
+                        foreach (var comment in Model.Comments)
+                        {
+                            <tr>
+                                <th scope="row">@comment.UserName</th>
+                                <td>@comment.CommentText</td>
+                                <td>@comment.Approved</td>
+                                <td>
+                                    @*<a id="btn_Link" class="btn" href="/Home/Edit/@article.Id">bewerken</a>*@
+                                    @if (comment.Approved == false)
+                                    {
+                                        <a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal2-@comment.Id">Accepteer</a>
+                                    }
+                                    <a id="btn_Delete" class="btn" data-toggle="modal" data-target="#Modal-@comment.Id">verwijderen</a>
+                                </td>
+                            </tr>
+                        }
                     }
-                }
                 </tbody>
             </table>
         </div>
@@ -72,8 +75,32 @@
                     </div>
                     <div class="modal-footer" id="modal_header">
                         <form asp-controller="Comment" asp-action="Delete">
-                            <input hidden name="id" value="@comment.Id"/>
-                            <input hidden name="articleId" value="@Model.Id"/>
+                            <input hidden name="id" value="@comment.Id" />
+                            <input hidden name="articleId" value="@Model.Id" />
+                            <button type="button" class="btn btn-dark" id="modal_btn_close" data-dismiss="modal">Sluit</button>
+                            <button type="submit" class="btn btn-dark" id="modal_btn">Verwijderen</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="Modal2-@comment.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" id="modal_header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Weet u zeker dat u dit artikel wilt verwijderen?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @comment.CommentText
+                    </div>
+                    <div class="modal-footer" id="modal_header">
+                        <form asp-controller="Comment" asp-action="Accept">
+                            <input hidden name="id" value="@comment.Id" />
+                            <input hidden name="articleId" value="@Model.Id" />
                             <button type="button" class="btn btn-dark" id="modal_btn_close" data-dismiss="modal">Sluit</button>
                             <button type="submit" class="btn btn-dark" id="modal_btn">Verwijderen</button>
                         </form>
