@@ -50,3 +50,11 @@ table{
         background-color: #0275d8;
         font-weight: bold;
     }
+
+.modal-dialog {
+    place-content: center;
+    max-width: 80vw;
+}
+.modal-content{
+    width: 80vw;
+}

@@ -23,6 +23,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                 }
             }
 
+            ViewData["Articles"] = articleList;
             ViewData["LastArticles"] = GetLastArticles(articleList);
             ViewData["TopTotalViews"] = GetTopTotalViews(articleList);
             ViewData["TopViews"] = GetTopViews(articleList);

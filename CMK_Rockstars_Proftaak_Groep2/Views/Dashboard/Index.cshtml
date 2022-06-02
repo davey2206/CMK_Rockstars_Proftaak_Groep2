@@ -13,8 +13,8 @@
     </div>
     <div id="cards">
         <div class="card" id="dashboard_card">
-            <div class="card_title"> 
-                <h3>Meest recent</h3> 
+            <div class="card_title">
+                <h3>Meest recent</h3>
             </div>
             <div class="card-body">
                 <table class="table">
@@ -28,11 +28,11 @@
                     <tbody>
                         @foreach (var article in ViewData["LastArticles"] as List<Article>)
                         {
-                        <tr>
-                            <td>@article.Title</td>
-                            <td>@article.publishDate</td>
-                            <td><a id="btn_Link" class="btn" href="/Home/Edit/@article.Id">Go to</a></td>
-                        </tr>
+                            <tr>
+                                <td>@article.Title</td>
+                                <td>@article.publishDate</td>
+                                <td><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -55,11 +55,11 @@
                     <tbody>
                         @foreach (var article in ViewData["TopTotalViews"] as List<Article>)
                         {
-                        <tr>
-                            <td>@article.Title</td>
-                            <td>@article.totalViewCount</td>
-                            <td><a id="btn_Link" class="btn" href="/Home/Edit/@article.Id">Go to</a></td>
-                        </tr>
+                            <tr>
+                                <td>@article.Title</td>
+                                <td>@article.totalViewCount</td>
+                                <td><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -82,11 +82,11 @@
                     <tbody>
                         @foreach (var article in ViewData["TopViews"] as List<Article>)
                         {
-                        <tr>
-                            <td>@article.Title</td>
-                            <td>@article.viewCount</td>
-                            <td><a id="btn_Link" class="btn" href="/Home/Edit/@article.Id">Go to</a></td>
-                        </tr>
+                            <tr>
+                                <td>@article.Title</td>
+                                <td>@article.viewCount</td>
+                                <td><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -95,6 +95,28 @@
     </div>
 </div>
 
-        <script>
-            $('#Dashboard').addClass('navContainer__item navContainer__item_state-active');
-        </script>
+@foreach (var article in ViewData["Articles"] as List<Article>)
+{
+    <div class="modal fade" id="Modal-@article.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="modal_header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">@article.Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Raw(article.Content)
+                </div>
+                <div class="modal-footer" id="modal_header">
+                    <button type="button" class="btn btn-dark" id="modal_btn_close" data-dismiss="modal">Sluit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $('#Dashboard').addClass('navContainer__item navContainer__item_state-active');
+</script>
