@@ -1,0 +1,109 @@
+﻿#nav_ToDo {
+    color: black;
+    font-weight: bold;
+    background-color: #FFE000;
+}
+
+.modal-header, .model-footer {
+    border: none;
+}
+
+#modal_btn_close {
+    height: auto;
+    background-color: #232323;
+    color: #FFE000;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+    #modal_btn_close:hover {
+        color: black;
+        background-color: dodgerblue;
+        font-weight: bold;
+    }
+
+#table_block {
+    background-color: white;
+}
+
+#radio_btn_comment {
+    background-color: #dedede;
+    border: none;
+    color: black;
+    transition: all 0.5s;
+}
+    #radio_btn_comment:disabled {
+        background-color: #cacaca;
+        border: solid;
+        color: black;
+        font-weight: bold;
+    }
+
+    #radio_btn_comment:hover {
+        background-color: #bdbdbd;
+        border: solid;
+        color: black;
+        font-weight: bold;
+    }
+
+#radio_btn_artikel {
+    background-color: #dedede;
+    border: none;
+    color: black;
+    transition: all 0.5s;
+}
+
+    #radio_btn_artikel:disabled {
+        background-color: #cacaca;
+        border: solid;
+        color: black;
+        font-weight: bold;
+    }
+
+    #radio_btn_artikel:hover {
+        background-color: #bdbdbd;
+        border: solid;
+        color: black;
+        font-weight: bold;
+    }
+
+#btn_Link {
+    cursor: pointer;
+    background-color: lightgray;
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+
+    #btn_Link:hover {
+        color: white;
+        background-color: #0275d8;
+        font-weight: bold;
+    }
+
+#btn_Delete {
+    cursor: pointer;
+    background-color: lightgray;
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+
+    #btn_Delete:hover {
+        color: white;
+        background-color: #ff0000;
+        font-weight: bold;
+    }
+
+#btn_vb {
+    cursor: pointer;
+    background-color: lightgray;
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+
+    #btn_vb:hover {
+        color: white;
+        background-color: darkgray;
+        font-weight: bold;
+    }
