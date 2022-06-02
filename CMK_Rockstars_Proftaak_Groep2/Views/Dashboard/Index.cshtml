@@ -22,6 +22,7 @@
                         <tr>
                             <th scope="col">Titel</th>
                             <th scope="col">Datum</th>
+                            <th scope="col">link</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,7 @@
                         <tr>
                             <td>@article.Title</td>
                             <td>@article.publishDate</td>
+                            <td><a id="btn_Link" class="btn" href="/Home/Edit/@article.Id">Go to</a></td>
                         </tr>
                         }
                     </tbody>
@@ -47,6 +49,7 @@
                         <tr>
                             <th scope="col">Titel</th>
                             <th scope="col">Total Views</th>
+                            <th scope="col">link</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +58,7 @@
                         <tr>
                             <td>@article.Title</td>
                             <td>@article.totalViewCount</td>
+                            <td><a id="btn_Link" class="btn" href="/Home/Edit/@article.Id">Go to</a></td>
                         </tr>
                         }
                     </tbody>
@@ -72,6 +76,7 @@
                         <tr>
                             <th scope="col">Titel</th>
                             <th scope="col">Views</th>
+                            <th scope="col">link</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,6 +85,7 @@
                         <tr>
                             <td>@article.Title</td>
                             <td>@article.viewCount</td>
+                            <td><a id="btn_Link" class="btn" href="/Home/Edit/@article.Id">Go to</a></td>
                         </tr>
                         }
                     </tbody>

@@ -36,3 +36,17 @@
 table{
     width: 100%;
 }
+
+#btn_Link {
+    cursor: pointer;
+    background-color: lightgray;
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+
+    #btn_Link:hover {
+        color: white;
+        background-color: #0275d8;
+        font-weight: bold;
+    }
