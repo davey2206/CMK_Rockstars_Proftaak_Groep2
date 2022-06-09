@@ -15,6 +15,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Models
         public string TribeName { get; set; }
         [Newtonsoft.Json.JsonProperty("RockstarName", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string RockstarName { get; set; }
+        public bool concept { get; set; }
         public bool published { get; set; }
         [Newtonsoft.Json.JsonProperty("publishDate", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DateTime publishDate { get; set; }

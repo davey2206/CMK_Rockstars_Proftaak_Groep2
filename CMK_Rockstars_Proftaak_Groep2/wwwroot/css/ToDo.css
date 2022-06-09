@@ -107,3 +107,12 @@
         background-color: darkgray;
         font-weight: bold;
     }
+
+.modal-dialog {
+    place-content: center;
+    max-width: 80vw;
+}
+
+.modal-content {
+    width: 80vw;
+}

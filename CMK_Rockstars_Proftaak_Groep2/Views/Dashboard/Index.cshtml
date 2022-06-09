@@ -94,7 +94,7 @@
                 <h3>To do</h3>
             </div>
             <div class="col 1 text-sm-left mt-3">
-                <a id="td_btn" class="td_btn" asp-action="add" asp-controller="home">Volledige weergave</a>
+                <a id="td_btn" class="td_btn" asp-action="index" asp-controller="ToDo">Volledige weergave</a>
             </div>
             <div class="card-body card_body">
                 <table class="table">
@@ -105,15 +105,29 @@
                     </tr>
                     @if (ViewData["Articles"] != null)
                     {
-                        @foreach (var article in ViewData["Articles"] as List<Article>)
+                        int count = 0;
+                        foreach (var article in ViewData["ArticlesToDo"] as List<Article>)
                         {
-                            @if (article.published == false)
+                            if (count < 3)
                             {
                                 <tr class="table_row">
                                     <td>@article.Title</td>
                                     <td>@article.publishDate</td>
                                     <td class="td__btn"><a id="btn_Link" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">Go to</a></td>
                                 </tr>
+                                count++;
+                            }
+                        }
+                        foreach (var Comment in ViewData["CommentsToDo"] as List<Comment>)
+                        {
+                            if (count < 3)
+                            {
+                                <tr class="table_row">
+                                    <td>@Comment.CommentText</td>
+                                    <td>@Comment.CommentDate</td>
+                                    <td class="td__btn"></td>
+                                </tr>
+                                count++;
                             }
                         }
                     }

@@ -25,6 +25,8 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         public async Task<IActionResult> Index()
         {
             List<Article> articleList = new List<Article>();
+            List<Comment> comments = new List<Comment>();
+            List<Comment> commentsToAdd = new List<Comment>();
             using (var httpClient = new HttpClient())
             {
                 using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/All"))
@@ -33,66 +35,65 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                     articleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
                 }
             }
-            ViewData["Articles"] = articleList;
-            return View();
-        }
+            foreach (var article in articleList)
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/comment/all/articleId/" + article.Id))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        commentsToAdd = JsonConvert.DeserializeObject<List<Comment>>(apiResponse);
+                    }
+                }
+                if (commentsToAdd != null)
+                {
+                    foreach (var comment in commentsToAdd)
+                    {
+                        comments.Add(comment);
+                    }
+                }
+            }
 
-        public IActionResult Add()
-        {
+            ViewData["Comments"] = comments.Where(c => c.Approved == false).ToList();
+            ViewData["Articles"] = articleList.Where(a => a.published == false && a.concept == false).ToList();
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAsync([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName,Published")] string submitButton, Article article)
+        public async Task<IActionResult> DeleteCommentAsync(string id)
         {
-            switch (submitButton)
-            {
-                case "Concept":
-                    article.published = false;
-                    break;
-                case "Toevoegen":
-                    article.published = true;
-                    break;
-            }
-
             using (var httpClient = new HttpClient())
             {
-                StringContent content = new StringContent(JsonConvert.SerializeObject(article), Encoding.UTF8, "application/json");
-
-                using (var response = await httpClient.PostAsync("https://rockstar-api.azurewebsites.net/api/Article", content))
+                using (var response = await httpClient.DeleteAsync("https://rockstar-api.azurewebsites.net/api/comment/" + id))
                 {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    await response.Content.ReadAsStringAsync();
                 }
             }
-            return RedirectToAction("Index", "Home");
+
+            return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> EditAsync(string id)
-        {
-            Article article = new Article();
-            using (var httpClient = new HttpClient())
-            {
-                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/" + id))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    article = JsonConvert.DeserializeObject<Article>(apiResponse);
-                }
-            }
-            ViewBag.article = article;
-            return View();
-        }
         [HttpPost]
-        public async Task<IActionResult> EditAsync([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName")] string submitButton, Article article)
+        public async Task<IActionResult> AcceptCommentAsync([Bind("Id, ArticleId, UserId, UserName, CommentText, Approved, CommentDate")] Comment comment)
         {
-            switch (submitButton)
+            comment.Approved = true;
+            using (var httpClient = new HttpClient())
             {
-                case "Concept":
-                    article.published = false;
-                    break;
-                case "Bewerkten":
-                    article.published = true;
-                    break;
+                StringContent content = new StringContent(JsonConvert.SerializeObject(comment), Encoding.UTF8, "application/json");
+
+                using (var response = await httpClient.PutAsync("https://rockstar-api.azurewebsites.net/api/comment/" + comment.Id, content))
+                {
+                    await response.Content.ReadAsStringAsync();
+                }
             }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AcceptArticleAsync([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName")] Article article)
+        {
+            article.published = true;
 
             using (var httpClient = new HttpClient())
             {
@@ -103,21 +104,25 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteAsync(string Id)
+        public async Task<IActionResult> DeleteArticleAsync([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName")] Article article)
         {
+            article.concept = true;
+            article.published = false;
+
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.DeleteAsync("https://rockstar-api.azurewebsites.net/api/Article/" + Id))
+                StringContent content = new StringContent(JsonConvert.SerializeObject(article), Encoding.UTF8, "application/json");
+
+                using (var response = await httpClient.PutAsync("https://rockstar-api.azurewebsites.net/api/Article/" + article.Id, content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }
             }
-
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
