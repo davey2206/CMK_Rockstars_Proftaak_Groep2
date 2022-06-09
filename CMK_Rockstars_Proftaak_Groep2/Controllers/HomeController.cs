@@ -95,7 +95,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                     article.concept = false;
                     break;
             }
-
+            article.publishDate = DateTime.Now;
             article.published = false;
 
             using (var httpClient = new HttpClient())

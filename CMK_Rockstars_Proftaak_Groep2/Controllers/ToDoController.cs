@@ -94,6 +94,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         public async Task<IActionResult> AcceptArticleAsync([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName")] Article article)
         {
             article.published = true;
+            article.publishDate = DateTime.Now;
 
             using (var httpClient = new HttpClient())
             {
@@ -112,6 +113,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         {
             article.concept = true;
             article.published = false;
+            article.publishDate = DateTime.Now;
 
             using (var httpClient = new HttpClient())
             {
