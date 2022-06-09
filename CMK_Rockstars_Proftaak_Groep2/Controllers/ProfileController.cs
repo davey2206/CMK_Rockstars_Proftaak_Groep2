@@ -42,13 +42,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         }
 
         [AuthorizeForScopes(ScopeKeySection = "DownstreamApi:Scopes")]
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [AuthorizeForScopes(ScopeKeySection = "DownstreamApi:Scopes")]
-        public async Task<IActionResult> Profile()
+        public async Task<IActionResult> Index()
         {
             User currentUser = null;
 
