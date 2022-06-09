@@ -1,4 +1,5 @@
-﻿@{
+﻿@using System.Security.Principal
+@{
     ViewData["Title"] = "Profiel Pagina";
 }
 @section css {
@@ -10,20 +11,28 @@
         <div>
             <h1>Mijn Profiel</h1>
         </div>
-        <form class="rounded mt-2">
-            <div class="form-group">
-                <label>Gebruikersnaam</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Omschrijving</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Afbeelding</label>
-                <input type="file" class="form-control">
-            </div>
-            <button id="btn_add" type="submit" class="btn btn-primary">Bewerk Profiel</button>
-        </form>
+        <div>
+            @{
+                    if (ViewData["photo"] != null)
+                    {
+                        <img style="margin: 5px 0; width: 150px" src="data:image/jpeg;base64, @ViewData["photo"]" />
+                    }
+                    else
+                    {
+                        <p>No Pic available for this user. Upload a pic for this user in the Azure portal</p>
+                    }
+                    var user = ViewData["me"] as Microsoft.Graph.User;
+                <p>@user.DisplayName</p>
+
+                if(User.Identity.IsAuthenticated)
+                {
+                    <a asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign out</a>
+                }
+                else
+                {
+                    <a asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+                }
+                }
+        </div>
     </div>
 </div>
