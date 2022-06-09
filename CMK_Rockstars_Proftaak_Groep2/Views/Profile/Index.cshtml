@@ -6,33 +6,45 @@
     <link href="@Url.Content("~/css/Profile.css")" rel="stylesheet" />
 }
 
-<div class="container">
-    <div id="content_profile">
-        <div>
-            <h1>Mijn Profiel</h1>
-        </div>
-        <div>
-            @{
-                    if (ViewData["photo"] != null)
-                    {
-                        <img style="margin: 5px 0; width: 150px" src="data:image/jpeg;base64, @ViewData["photo"]" />
-                    }
-                    else
-                    {
-                        <p>No Pic available for this user. Upload a pic for this user in the Azure portal</p>
-                    }
-                    var user = ViewData["me"] as Microsoft.Graph.User;
-                <p>@user.DisplayName</p>
+<div id="profile_container">
+    <div id="p_container"> 
+        <div class="row">
 
-                if(User.Identity.IsAuthenticated)
-                {
-                    <a asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign out</a>
-                }
-                else
-                {
-                    <a asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
-                }
-                }
+                <h1>Profiel pagina</h1>
+
+        </div>
+
+        <div class="card profile_card">
+            <div class="card_title">
+                <h3>Mijn Profiel</h3>
+            </div>
+            <div class="card-body card_body">
+
+
+                <div>
+                    @{
+                        if (ViewData["photo"] != null)
+                        {
+                            <img style="margin: 5px 0; width: 150px" src="data:image/jpeg;base64, @ViewData["photo"]" />
+                        }
+                        else
+                        {
+                            <p>No Pic available for this user. Upload a pic for this user in the Azure portal</p>
+                        }
+                        var user = ViewData["me"] as Microsoft.Graph.User;
+                        <p>@user.DisplayName</p>
+
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <a id="profile_btn" class="btn" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign out</a>
+                        }
+                        else
+                        {
+                            <a asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+                        }
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>

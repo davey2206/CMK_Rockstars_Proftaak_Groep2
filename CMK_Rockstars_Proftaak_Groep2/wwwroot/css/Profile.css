@@ -40,3 +40,43 @@ form {
     padding-left: 60px;
     grid-template-rows: 56px;
 }
+
+#profile_container {
+    padding: 3rem 10vw;
+}
+#p_container {
+    margin: auto;
+    width: 500px;
+    text-align: center;
+}
+
+.profile_card {
+    margin: auto;
+    display: flex;
+    width: calc(50% - 10px);
+    max-width: 700px;
+    padding: 25px 18px;
+}
+.card_body {
+    padding: 0;
+}
+.container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: space-around;
+}
+#profile_btn {
+    cursor: pointer;
+    background-color: lightgray;
+    color: black;
+    border: none;
+    transition: color 0.5s, background-color 0.5s, font-weight 0.3s;
+}
+#profile_btn:hover {
+    color: white;
+    background-color: #ff0000;
+    font-weight: bold;
+}
+.row {
+    display: block;
+}
