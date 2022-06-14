@@ -36,7 +36,6 @@
                         <tr>
                             <th scope="col" width="250vh">Naam</th>
                             <th scope="col" width="250vh">Rol</th>
-                            <th scope="col" width="1000vh">Omschrijving</th>
                             <th scope="col" width="1000vh">Acties</th>
                         </tr>
                     </thead>
@@ -44,9 +43,8 @@
                         @foreach (var rockstar in ViewData["Rockstars"] as List<Rockstar>)
 	                    {
                         <tr>
-                            <td>@rockstar.Name</td>
+                            <td>@rockstar.displayName</td>
                             <td>@rockstar.Role</td>
-                            <td>@rockstar.Description</td>
                             <td>
                                 <a>bewerken</a>
                                 <a class="ml-2">weergeven</a>
@@ -77,7 +75,7 @@
                         @foreach (var tribe in ViewData["Tribes"] as List<Tribe>)
                         {
                         <tr>
-                            <td>@tribe.Name</td>
+                            <td>@tribe.displayName</td>
                             <td>
                                 <a>bewerken</a>
                                 <a class="ml-2">weergeven</a>
