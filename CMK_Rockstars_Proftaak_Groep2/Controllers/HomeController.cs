@@ -45,6 +45,15 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAsync([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName,Published")] string submitButton, Article article)
         {
+            List<Tribe> userTribeList = new List<Tribe>();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Tribe"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    userTribeList = JsonConvert.DeserializeObject<List<Tribe>>(apiResponse);
+                }
+            }
             switch (submitButton)
             {
                 case "Concept":
@@ -66,6 +75,11 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }
             }
+            if(userTribeList != null)
+            {
+                ViewData["tribeList"] = userTribeList;
+            }
+
             return RedirectToAction("Index", "Home");
         }
 
