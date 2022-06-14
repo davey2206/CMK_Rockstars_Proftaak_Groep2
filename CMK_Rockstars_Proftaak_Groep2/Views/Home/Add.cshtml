@@ -10,6 +10,14 @@
     <div id="post">
         @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { onsubmit = "return AddValue()" }))
         {
+            <select name="TribeId">
+                @{
+                        @foreach (var tribe in ViewData["tribeList"] as List<Tribe>)
+                        {
+                            <option value="@tribe.id">@tribe.displayName</option>
+                        }
+                }
+            </select>
             <div class="row" id="articleHeader">
                 <div class="col-10" id="articleTitleWrap">
                     <div class="input-group input-group mb-3">
@@ -25,8 +33,7 @@
                 </div>
             </div>
             <div>
-                <input hidden name="TribeId" value="5a211295-e16d-4dd5-81c9-6735a5e9be9f" />
-                <input hidden name="RockstarId" value="67a4f3a5-db8f-4e8e-b993-d6f6c5672800" />
+                <input hidden name="RockstarId" value="474313f4-d945-4543-af53-3d3357b430c9" />
                 <input hidden id="Published" name="Published" value="" />
                 <textarea hidden id="TextContent" name="Content"></textarea>
             </div>
