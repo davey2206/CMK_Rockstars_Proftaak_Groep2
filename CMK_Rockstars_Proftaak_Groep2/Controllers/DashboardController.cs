@@ -38,7 +38,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             List<Article> articles = new List<Article>();
             articleList.Sort((x, y) => DateTime.Compare(x.publishDate, y.publishDate));
             articleList.Reverse();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < (articleList.Count < 3 ? articleList.Count : 3); i++)
             {
                 articles.Add(articleList[i]);
             }
@@ -51,7 +51,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             List<Article> articles = new List<Article>();
             articleList = articleList.OrderBy(a => a.totalViewCount).ToList();
             articleList.Reverse();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < (articleList.Count < 3 ? articleList.Count : 3); i++)
             {
                 articles.Add(articleList[i]);
             }
@@ -64,7 +64,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             List<Article> articles = new List<Article>();
             articleList = articleList.OrderBy(a => a.viewCount).ToList();
             articleList.Reverse();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < (articleList.Count < 3 ? articleList.Count : 3); i++)
             {
                 articles.Add(articleList[i]);
             }
