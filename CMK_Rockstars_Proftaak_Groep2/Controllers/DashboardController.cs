@@ -14,6 +14,8 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         public async Task<IActionResult> IndexAsync()
         {
             List<Article> articleList = new List<Article>();
+            List<Comment> comments = new List<Comment>();
+            List<Comment> commentsToAdd = new List<Comment>();
             using (var httpClient = new HttpClient())
             {
                 using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/All"))
@@ -23,8 +25,29 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                 }
             }
 
+            foreach (var article in articleList)
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/comment/all/articleId/" + article.Id))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        commentsToAdd = JsonConvert.DeserializeObject<List<Comment>>(apiResponse);
+                    }
+                }
+                if (commentsToAdd != null)
+                {
+                    foreach (var comment in commentsToAdd)
+                    {
+                        comments.Add(comment);
+                    }
+                }
+            }
+
             if (articleList != null)
             {
+                ViewData["CommentsToDo"] = comments.Where(c => c.Approved == false).Take(3).ToList();
+                ViewData["ArticlesToDo"] = articleList.Where(a => a.published == false && a.concept == false).Take(3).ToList();
                 ViewData["Articles"] = articleList;
                 ViewData["LastArticles"] = GetLastArticles(articleList);
                 ViewData["TopTotalViews"] = GetTopTotalViews(articleList);

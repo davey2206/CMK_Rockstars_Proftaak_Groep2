@@ -54,7 +54,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
 
         // UPDATE
         [HttpPost]
-        public async Task<IActionResult> AcceptAsync([Bind("Id, ArticleId")] Comment comment)
+        public async Task<IActionResult> AcceptAsync([Bind("Id, ArticleId, UserId, UserName, CommentText, Approved, CommentDate")] Comment comment)
         {
             comment.Approved = true;
             using (var httpClient = new HttpClient())

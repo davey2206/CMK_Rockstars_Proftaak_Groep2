@@ -45,15 +45,17 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAsync([Bind("Id,TribeId,RockstarId,Title,Content,TribeName,RockstarName,Published")] string submitButton, Article article)
         {
-            switch(submitButton)
+            switch (submitButton)
             {
                 case "Concept":
-                    article.published = false;
+                    article.concept = true;
                     break;
                 case "Toevoegen":
-                    article.published = true;
+                    article.concept = false;
                     break;
             }
+
+            article.published = false;
 
             using (var httpClient = new HttpClient())
             {
@@ -87,12 +89,14 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             switch (submitButton)
             {
                 case "Concept":
-                    article.published = false;
+                    article.concept = true;
                     break;
                 case "Bewerkten":
-                    article.published = true;
+                    article.concept = false;
                     break;
             }
+            article.publishDate = DateTime.Now;
+            article.published = false;
 
             using (var httpClient = new HttpClient())
             {

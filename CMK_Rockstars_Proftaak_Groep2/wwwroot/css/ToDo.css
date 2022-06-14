@@ -107,3 +107,45 @@
         background-color: darkgray;
         font-weight: bold;
     }
+
+.modal-dialog {
+    place-content: center;
+    max-width: 80vw;
+}
+
+.modal-content {
+    width: 80vw;
+}
+
+#title {
+    font-size: 25px;
+}
+
+th {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #F6F6F6;
+}
+
+td {
+    opacity: .75;
+}
+
+.table {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+    .table .td__btn {
+        padding: 5px 12px;
+    }
+
+    .table th {
+        border: none;
+    }
+
+    .table td {
+        border: none;
+    }

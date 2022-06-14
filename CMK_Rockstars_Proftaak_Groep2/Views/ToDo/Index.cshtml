@@ -22,65 +22,56 @@
             <div id="artikel_table">
                 <div class="row">
                     <div class="col-6 text-left pl-5 pt-2 pb-2">
-                        <h2>Artikelen</h2>
+                        <h2 id="title">Artikelen</h2>
                     </div>
                 </div>
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Titel</th>
-                            <th scope="col">Tribe</th>
-                            <th scope="col">Rockstar</th>
-                            <th scope="col">Acties</th>
+                    <tr>
+                        <th scope="col">Titel</th>
+                        <th scope="col">Tribe</th>
+                        <th scope="col">Rockstar</th>
+                        <th scope="col">Acties</th>
+                    </tr>
+                    @foreach (var article in ViewData["Articles"] as List<Article>)
+                    {
+                        <tr class="table_row">
+                            <th scope="row">@article.Title</th>
+                            <td>@article.TribeName</td>
+                            <td>@article.RockstarName</td>
+                            <td class="td__btn">
+                                <a id="btn_vb" class="btn" data-toggle="modal" data-target="#ArticleModal-@article.Id">Voorbeeld</a>
+                                <a id="btn_Link" class="btn" data-toggle="modal" data-target="#ArticleModal2-@article.Id">Goedkeuren</a>
+                                <a id="btn_Delete" class="btn" data-toggle="modal" data-target="#ArticleModal3-@article.Id">Afwijzen</a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var article in ViewData["Articles"] as List<Article>)
-                        {
-                            <tr>
-                                <th scope="row">@article.Title</th>
-                                <td>@article.TribeName</td>
-                                <td>@article.RockstarName</td>
-                                <td>
-                                    <a id="btn_vb" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">voorbeeld</a>
-                                    <a id="btn_Link" class="btn" asp-controller="Comment" asp-action="Index" asp-route-id="@article.Id">goedkeuren</a>
-                                    <a id="btn_Delete" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">afwijzen</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
+                    }
                 </table>
             </div>
             <div id="comment_table" style="display: none">
                 <div class="row">
                     <div class="col-6 text-left pl-5 pt-2 pb-2">
-                        <h2>Comments</h2>
+                        <h2 id="title">Comments</h2>
                     </div>
                 </div>
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Titel</th>
-                            <th scope="col">Tribe</th>
-                            <th scope="col">Rockstar</th>
-                            <th scope="col">Acties</th>
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Comment</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Acties</th>
+                    </tr>
+                    @foreach (var comment in ViewData["Comments"] as List<Comment>)
+                    {
+                        <tr class="table_row">
+                            <td scope="row">@comment.UserName</td>
+                            <td>@comment.CommentText</td>
+                            <td>@comment.CommentDate</td>
+                            <td class="td__btn">
+                                <a id="btn_Link" class="btn" data-toggle="modal" data-target="#CommentModal2-@comment.Id">Goedkeuren</a>
+                                <a id="btn_Delete" class="btn" data-toggle="modal" data-target="#CommentModal-@comment.Id">Verwijderen</a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var article in ViewData["Articles"] as List<Article>)
-                        {
-                            <tr>
-                                <th scope="row">@article.Title</th>
-                                <td>@article.TribeName</td>
-                                <td>@article.RockstarName</td>
-                                <td>
-                                    <a id="btn_vb" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">voorbeeld</a>
-                                    <a id="btn_Link" class="btn" asp-controller="Comment" asp-action="Index" asp-route-id="@article.Id">goedkeuren</a>
-                                    <a id="btn_Delete" class="btn" data-toggle="modal" data-target="#Modal-@article.Id">afwijzen</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
+                    }
                 </table>
             </div>
         </div>
@@ -89,7 +80,7 @@
 
 @foreach (var article in ViewData["Articles"] as List<Article>)
 {
-    <div class="modal fade" id="Modal-@article.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="ArticleModal-@article.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header" id="modal_header">
@@ -103,6 +94,115 @@
                 </div>
                 <div class="modal-footer" id="modal_header">
                     <button type="button" class="btn btn-dark" id="modal_btn_close" data-dismiss="modal">Sluit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ArticleModal2-@article.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="modal_header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Weet u zeker dat u dit Article wilt Accepteer?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Raw(article.Content)
+                </div>
+                <div class="modal-footer" id="modal_header">
+                    <form asp-controller="ToDo" asp-action="AcceptArticle">
+                        <input hidden name="Id" value="@article.Id" />
+                        <input hidden name="Title" value="@article.Title" />
+                        <input hidden name="TribeId" value="@article.TribeId" />
+                        <input hidden name="RockstarId" value="@article.RockstarId" />
+                        <textarea hidden id="TextContent" name="Content">@article.Content</textarea>
+                        <button type="button" class="btn btn-dark" id="modal_btn_close" data-dismiss="modal">Sluit</button>
+                        <button type="submit" class="btn btn-dark" id="modal_btn">Accepteer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ArticleModal3-@article.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="modal_header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Weet u zeker dat u dit Article wilt Afwijzen?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Raw(article.Content)
+                </div>
+                <div class="modal-footer" id="modal_header">
+                    <form asp-controller="ToDo" asp-action="DeleteArticle">
+                        <input hidden name="Id" value="@article.Id" />
+                        <input hidden name="Title" value="@article.Title" />
+                        <input hidden name="TribeId" value="@article.TribeId" />
+                        <input hidden name="RockstarId" value="@article.RockstarId" />
+                        <textarea hidden id="TextContent" name="Content">@article.Content</textarea>
+                        <button type="button" class="btn btn-dark" id="modal_btn_close" data-dismiss="modal">Sluit</button>
+                        <button type="submit" class="btn btn-dark" id="modal_btn">Afwijzen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@foreach (var comment in ViewData["Comments"] as List<Comment>)
+{
+    <div class="modal fade" id="CommentModal-@comment.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="modal_header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Weet u zeker dat u deze Comment wilt verwijderen?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @comment.CommentText
+                </div>
+                <div class="modal-footer" id="modal_header">
+                    <form asp-controller="ToDo" asp-action="DeleteComment">
+                        <input hidden name="id" value="@comment.Id" />
+                        <button type="button" class="btn btn-dark" id="modal_btn_close" data-dismiss="modal">Sluit</button>
+                        <button type="submit" class="btn btn-dark" id="modal_btn">Verwijderen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="CommentModal2-@comment.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="modal_header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Weet u zeker dat u deze Comment wilt Accepteer?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @comment.CommentText
+                </div>
+                <div class="modal-footer" id="modal_header">
+                    <form asp-controller="ToDo" asp-action="AcceptComment">
+                        <input hidden name="id" value="@comment.Id" />
+                        <input hidden name="articleId" value="@comment.ArticleId" />
+                        <input hidden name="UserId" value="@comment.UserId" />
+                        <input hidden name="UserName" value="@comment.UserName" />
+                        <input hidden name="CommentText" value="@comment.CommentText" />
+                        <input hidden name="Approved" value="@comment.Approved" />
+                        <input hidden name="CommentDate" value="@comment.CommentDate" />
+                        <button type="button" class="btn btn-dark" id="modal_btn_close" data-dismiss="modal">Sluit</button>
+                        <button type="submit" class="btn btn-dark" id="modal_btn">Accepteer</button>
+                    </form>
                 </div>
             </div>
         </div>
