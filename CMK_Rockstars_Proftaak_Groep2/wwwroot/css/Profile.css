@@ -21,9 +21,6 @@ form {
     padding: 2em;
     height: fit-content;
 }
-#content {
-    position: relative;
-}
 #content_profile {
     width: 50vh;
     position: fixed;

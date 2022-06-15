@@ -15,7 +15,6 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         {
             List<Article> articleList = new List<Article>();
             List<Comment> comments = new List<Comment>();
-            List<Comment> commentsToAdd = new List<Comment>();
             using (var httpClient = new HttpClient())
             {
                 using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/All"))
@@ -25,22 +24,12 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                 }
             }
 
-            foreach (var article in articleList)
+            using (var httpClient = new HttpClient())
             {
-                using (var httpClient = new HttpClient())
+                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/comment/notapproved"))
                 {
-                    using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/comment/all/articleId/" + article.Id))
-                    {
-                        string apiResponse = await response.Content.ReadAsStringAsync();
-                        commentsToAdd = JsonConvert.DeserializeObject<List<Comment>>(apiResponse);
-                    }
-                }
-                if (commentsToAdd != null)
-                {
-                    foreach (var comment in commentsToAdd)
-                    {
-                        comments.Add(comment);
-                    }
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    comments = JsonConvert.DeserializeObject<List<Comment>>(apiResponse);
                 }
             }
 

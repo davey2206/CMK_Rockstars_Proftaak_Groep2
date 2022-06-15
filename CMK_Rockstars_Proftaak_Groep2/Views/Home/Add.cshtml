@@ -10,25 +10,30 @@
     <div id="post">
         @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { onsubmit = "return AddValue()" }))
         {
-            <select name="TribeId">
-                @{
-                        @foreach (var tribe in ViewData["tribeList"] as List<Tribe>)
-                        {
-                            <option value="@tribe.id">@tribe.displayName</option>
-                        }
-                }
-            </select>
             <div class="row" id="articleHeader">
-                <div class="col-10" id="articleTitleWrap">
+                <div class="col-8" id="articleTitleWrap">
+                    <div class="input-group input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Tribe</span>
+                        </div>
+                        <select name="TribeId">
+                            @{
+                                @foreach (var tribe in ViewData["tribeList"] as List<Tribe>)
+                                {
+                                    <option value="@tribe.id">@tribe.displayName</option>
+                                }
+                            }
+                        </select>
+                    </div>
                     <div class="input-group input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Titel</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"  name="Title">
+                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" name="Title">
                     </div>
-                </div><!--
-                --><div class="col-2" id="buttonWrap">
-                    <input id="btn_concept" class="btn ml-5" type="submit" name="submitButton" value="Concept"/>
+                </div>
+                <div class="col-2" id="buttonWrap" style="float: right;">
+                    <input id="btn_concept" class="btn ml-5" type="submit" name="submitButton" value="Concept" />
                     <input id="btn_add" class="btn" type="submit" name="submitButton" value="Toevoegen" />
                 </div>
             </div>
