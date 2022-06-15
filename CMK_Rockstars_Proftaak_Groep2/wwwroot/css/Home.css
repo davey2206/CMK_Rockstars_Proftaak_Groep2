@@ -77,6 +77,11 @@ td {
     border: none;
 }
 
+.table tr {
+    height: 75px;
+}
+
 .table td {
     border: none;
+    vertical-align: middle;
 }
