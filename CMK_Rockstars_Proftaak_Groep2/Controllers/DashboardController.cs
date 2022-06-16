@@ -50,6 +50,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             List<Article> articles = new List<Article>();
             articleList.Sort((x, y) => DateTime.Compare(x.publishDate, y.publishDate));
             articleList.Reverse();
+            articleList = articleList.Where(a => a.published == true && a.concept == false).ToList();
             for (int i = 0; i < (articleList.Count < 3 ? articleList.Count : 3); i++)
             {
                 articles.Add(articleList[i]);
