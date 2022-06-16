@@ -10,20 +10,38 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Graph;
+using Microsoft.Identity.Web;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Identity.Client;
 
 namespace CMK_Rockstars_Proftaak_Groep2.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly GraphServiceClient _graphServiceClient;
+        private readonly MicrosoftIdentityConsentAndConditionalAccessHandler _consentHandler;
 
-        public HomeController(ILogger<HomeController> logger)
+        private string[] _graphScopes;
+
+        public HomeController(ILogger<HomeController> logger,
+                            IConfiguration configuration,
+                            GraphServiceClient graphServiceClient,
+                            MicrosoftIdentityConsentAndConditionalAccessHandler consentHandler)
         {
             _logger = logger;
-        }
+            _graphServiceClient = graphServiceClient;
+            this._consentHandler = consentHandler;
 
+            // Capture the Scopes for Graph that were used in the original request for an Access token (AT) for MS Graph as
+            // they'd be needed again when requesting a fresh AT for Graph during claims challenge processing
+            _graphScopes = configuration.GetValue<string>("DownstreamApi:Scopes")?.Split(' ');
+        }
         public async Task<IActionResult> Index()
         {
+            User user = await _graphServiceClient.Me.Request().GetAsync();
+
             List<Article> articleList = new List<Article>();
             using (var httpClient = new HttpClient())
             {
@@ -33,7 +51,47 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
                     articleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
                 }
             }
-            ViewData["Articles"] = articleList;
+
+            List<Tribe> tribes = new List<Tribe>();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Tribe/" + user.Id))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    tribes = JsonConvert.DeserializeObject<List<Tribe>>(apiResponse);
+                }
+            }
+
+            List<Role> roles = new List<Role>();
+            foreach (var tribe in tribes)
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.GetAsync("/api/rockstar/GetRockstarRole/TribeId/" + tribe.id + "/RockstarId/" + user.Id))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        roles.AddRange(JsonConvert.DeserializeObject<List<Role>>(apiResponse));
+                    }
+                }
+            }
+
+            int count = 0;
+            List<Article> articles = new List<Article>();
+            foreach (var tribe in tribes)
+            {
+                if (roles[count].name == "Tribe lead")
+                {
+                    articles.AddRange(articleList.Where(a => a.TribeId == tribe.id).ToList());
+                }
+                if (roles[count].name == "Special agent")
+                {
+                    articles.AddRange(articleList.Where(a => a.RockstarId == user.Id).ToList());
+                }
+                count++;
+            }
+
+
+            ViewData["Articles"] = articles;
             return View();
         }
 
