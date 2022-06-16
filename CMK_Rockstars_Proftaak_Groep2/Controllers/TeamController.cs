@@ -18,7 +18,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             List<Rockstar> rockstarList = new List<Rockstar>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/rockstar"))
+                using (var response = await httpClient.GetAsync("https://api-rockstarsit.azurewebsites.net/api/rockstar"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     rockstarList = JsonConvert.DeserializeObject<List<Rockstar>>(apiResponse);
@@ -28,7 +28,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             List<Tribe> tribeList = new List<Tribe>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/tribe"))
+                using (var response = await httpClient.GetAsync("https://api-rockstarsit.azurewebsites.net/api/tribe"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     tribeList = JsonConvert.DeserializeObject<List<Tribe>>(apiResponse);

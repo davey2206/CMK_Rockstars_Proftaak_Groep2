@@ -27,7 +27,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             List<Article> articleList = new List<Article>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/All"))
+                using (var response = await httpClient.GetAsync("https://api-rockstarsit.azurewebsites.net/api/Article/All"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     articleList = JsonConvert.DeserializeObject<List<Article>>(apiResponse);
@@ -42,7 +42,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             List<Tribe> userTribeList = new List<Tribe>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Tribe"))
+                using (var response = await httpClient.GetAsync("https://api-rockstarsit.azurewebsites.net/api/Tribe"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     userTribeList = JsonConvert.DeserializeObject<List<Tribe>>(apiResponse);
@@ -74,7 +74,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(article), Encoding.UTF8, "application/json");
 
-                using (var response = await httpClient.PostAsync("https://rockstar-api.azurewebsites.net/api/Article", content))
+                using (var response = await httpClient.PostAsync("https://api-rockstarsit.azurewebsites.net/api/Article", content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }
@@ -88,7 +88,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             Article article = new Article();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://rockstar-api.azurewebsites.net/api/Article/" + id))
+                using (var response = await httpClient.GetAsync("https://api-rockstarsit.azurewebsites.net/api/Article/" + id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     article = JsonConvert.DeserializeObject<Article>(apiResponse);
@@ -116,7 +116,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(article), Encoding.UTF8, "application/json");
 
-                using (var response = await httpClient.PutAsync("https://rockstar-api.azurewebsites.net/api/Article/" + article.Id, content))
+                using (var response = await httpClient.PutAsync("https://api-rockstarsit.azurewebsites.net/api/Article/" + article.Id, content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }
@@ -129,7 +129,7 @@ namespace CMK_Rockstars_Proftaak_Groep2.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.DeleteAsync("https://rockstar-api.azurewebsites.net/api/Article/" + Id))
+                using (var response = await httpClient.DeleteAsync("https://api-rockstarsit.azurewebsites.net/api/Article/" + Id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }
